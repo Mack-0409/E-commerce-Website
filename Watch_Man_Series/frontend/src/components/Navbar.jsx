@@ -61,11 +61,10 @@ const Navbar = () => {
         try {
             localStorage.removeItem("isLoggedIn");
             localStorage.removeItem("authToken");
-        } catch {
+        } catch (e) {}
             setLoggedIn(false);
             setOpen(false);
             navigate("/");
-        }
     }
 
     return (

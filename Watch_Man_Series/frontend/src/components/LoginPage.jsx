@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { loginPageStyles } from '../assets/dummyStyles';
 import { useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, Eye, EyeOff, Lock, User } from 'lucide-react';
  
 const LoginPage = () => {
     const [email, setEmail] = useState(" ");
@@ -88,7 +88,104 @@ const LoginPage = () => {
                 </button>
 
                 {/* MAIN CARD */}
+                <div className={loginPageStyles.loginCard}>
+                    <div className={loginPageStyles.decorativeTopLeft}></div>
+                    <div className={loginPageStyles.decorativeBottomRight}></div>
+
+                    <h2 className={loginPageStyles.cardTitle}>Welcome Back</h2>
+                    <p className={loginPageStyles.cardSubtitle}>
+                        Sign in to your Account.
+                    </p>
+
+                    <form onSubmit={handleSubmit}>
+                        <div className={loginPageStyles.formField}>
+                            <label htmlFor="email" className={loginPageStyles.formLabel}>
+                                Email
+                            </label>
+                            <div className={loginPageStyles.inputContainer}>
+                                <div className={loginPageStyles.inputIconContainer}>
+                                    <User className={loginPageStyles.inputIcon} />
+                                </div>
+                                <input 
+                                    type="email" 
+                                    id="email"
+                                    className={loginPageStyles.inputBase}
+                                    placeholder="Enter your Email" 
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    required
+                                />
+                            </div>
+                        </div>
+
+                        <div className={loginPageStyles.formField}>
+                            <label htmlFor="password" className={loginPageStyles.formLabel}>
+                                Password
+                            </label>
+                            <div className={loginPageStyles.inputContainer}>
+                                <div className={loginPageStyles.inputIconContainer}>
+                                    <Lock className={loginPageStyles.inputIcon} />
+                                </div>
+                                <input 
+                                    type={ showPassword? "text" : "password"} 
+                                    id="password"
+                                    className={loginPageStyles.passwordInputBase}
+                                    placeholder="Enter your Password" 
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                    required
+                                />
+
+                                <button type="button" className={loginPageStyles.passwordToggle} onClick={() => setShowPassword(!showPassword)}>
+                                    {showPassword ? (
+                                        <EyeOff className={loginPageStyles.inputIcon} />
+                                    ) : (
+                                        <Eye className={loginPageStyles.inputIcon} />
+                                    )}
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div className={loginPageStyles.rememberMeContainer}>
+                            <div className={loginPageStyles.checkboxContainer}>
+                                <input 
+                                    type="checkbox"
+                                    id="rememberMe"
+                                    className={loginPageStyles.checkbox}
+                                    checked={rememberMe}
+                                    onChange={() => setRememberMe(!rememberMe)}
+                                    required
+                                />
+                            </div>
+
+                            <div className={loginPageStyles.checkboxLabelContainer}>
+                                <label htmlFor="rememberMe" className={loginPageStyles.checkboxLabel}>
+                                    Remember Me{" "}
+                                    <span className={loginPageStyles.requiredStar}>*</span>
+                                </label>
+                            </div>        
+                        </div>
+
+                        <button type="submit" className={loginPageStyles.submitButton}>
+                            Login
+                        </button>
+                    </form>
+
+                    <div className={loginPageStyles.signupContainer}>
+                        <span className={loginPageStyles.signupText}>
+                            Don't have an Account? {" "}
+                        </span>
+                        <a href="/signup" className={loginPageStyles.signupLink}>
+                            Sign Up
+                        </a>
+                    </div>
+                </div>
             </div>
+
+            {/* Add font import */}
+            <style>
+                {`@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');`}
+            </style>
         </div>
     );
 };
