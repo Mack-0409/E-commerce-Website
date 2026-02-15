@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { watchOfferBannerStyles } from '../assets/dummyStyles';
 import F1 from '../assets/F1.png'; 
-
+import { Heart , Shield , Truck } from "lucide-react";
 
 const FashionPage = () => {
     
@@ -80,7 +80,42 @@ const FashionPage = () => {
                                 </div>    
                             </div>
                         ))}
+                    </div>
 
+                    {/* Features */}
+                    <div className={watchOfferBannerStyles.featuresContainer}>
+                        <div className={watchOfferBannerStyles.featureItem}>
+                            <Truck size={18} className={watchOfferBannerStyles.featureIcon} />
+                            <span className={watchOfferBannerStyles.featureText}>
+                                Free Shipping
+                            </span>
+                        </div>
+
+                        <div className={watchOfferBannerStyles.featureItem}>
+                            <Shield size={18} className={watchOfferBannerStyles.featureIcon} />
+                            <span className={watchOfferBannerStyles.featureText}>
+                                2-Year Warranty
+                            </span>
+                        </div>
+
+                        <div className={watchOfferBannerStyles.featureItem}>
+                            <Heart size={18} className={watchOfferBannerStyles.featureIcon} />
+                            <span className={watchOfferBannerStyles.featureText}>
+                                30-Days Replacement
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Img */}
+                <div className={watchOfferBannerStyles.imageSection}>
+                    <div className={watchOfferBannerStyles.imageOverlay}></div>
+                    <img src={F1} alt="img"className={watchOfferBannerStyles.image} />
+
+                    <div className={watchOfferBannerStyles.priceTag}>
+                        <div className={watchOfferBannerStyles.oldPrice}>$899.99</div>
+                        <div className={watchOfferBannerStyles.newPrice}>$629.99</div>
+                        <div className={watchOfferBannerStyles.discount}>save 30%</div>
                     </div>
                 </div>
             </div>
