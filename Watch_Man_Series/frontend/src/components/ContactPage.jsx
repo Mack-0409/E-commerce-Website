@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { contactPageStyles } from '../assets/dummyStyles';
-import { AlertCircle } from 'lucide-react';
+import { AlertCircle, Clock, IndianRupee, Mail, Phone, ShoppingCart, User } from 'lucide-react';
 
 // Input with an icon on left
 function InputWithIcon({
@@ -244,7 +244,77 @@ const ContactPage = () => {
                         <div className={contactPageStyles.formCard}>
                             <form onSubmit={handleSubmit} className={contactPageStyles.form}>
                                 <div className={contactPageStyles.inputGrid}>
-                                    
+                                    <InputWithIcon
+                                        icon={<User className=" w-5 h-5 text-black" />}
+                                        label="Your Name"
+                                        name="name"
+                                        value={form.name}
+                                        onChange={handleChange}
+                                        placeholder="FullName"
+                                        error={errors.name}
+                                        required
+                                    />
+
+                                    <InputWithIcon
+                                        icon={<Mail className=" w-5 h-5 text-black" />}
+                                        label="Email"
+                                        name="email"
+                                        value={form.email}
+                                        onChange={handleChange}
+                                        placeholder="your@example.com"
+                                        error={errors.email}
+                                        required
+                                    />
+                                </div>
+
+                                <div className={contactPageStyles.inputGrid}>
+                                    <InputWithIcon
+                                        icon={<Phone className=" w-5 h-5 text-black" />}
+                                        label="Phone"
+                                        name="phone"
+                                        value={form.phone}
+                                        onChange={handleChange}
+                                        placeholder="+91 xxxxx xxxxx"
+                                        error={errors.phone}
+                                        required
+                                    />
+
+                                    <SelectWithIcon
+                                        icon={<Clock className=" w-5 h-5 text-black" />}
+                                        label="Preferred Contact"
+                                        name="contactMethod"
+                                        value={form.contactMethod}
+                                        onChange={handleChange}
+                                        options={["whatsApp", "Phone Call", "Email"]}
+                                        error={errors.contactMethod}
+                                        required
+                                    />
+                                </div>
+
+                                <div>
+                                    <SelectWithIcon
+                                        icon={<ShoppingCart className=" w-5 h-5 text-black" />}
+                                        label="Product of interest"
+                                        name="product"
+                                        value={form.product}
+                                        onChange={handleChange}
+                                        options={products}
+                                        error={errors.product}
+                                        required
+                                    />
+                                </div>
+
+                                <div className={contactPageStyles.inputGrid}>
+                                    <InputWithIcon
+                                        icon={<IndianRupee className=" w-5 h-5 text-green-600" />}
+                                        label="Estimate Budget"
+                                        name="budget"
+                                        value={form.budget}
+                                        onChange={handleChange}
+                                        placeholder="e.g. ₹1,50,000 - ₹3,00,000"
+                                        error={errors.budget}
+                                        required
+                                    />
                                 </div>
                             </form>
                         </div>
