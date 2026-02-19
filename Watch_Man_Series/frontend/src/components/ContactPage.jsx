@@ -1,6 +1,17 @@
 import React, { useState } from 'react';
 import { contactPageStyles } from '../assets/dummyStyles';
-import { AlertCircle, Clock, IndianRupee, Mail, Phone, ShoppingCart, User } from 'lucide-react';
+import { 
+    AlertCircle,
+    Check, 
+    Clock, 
+    IndianRupee, 
+    Mail, 
+    MapPin, 
+    Phone, 
+    Send, 
+    ShoppingCart, 
+    User 
+} from 'lucide-react';
 
 // Input with an icon on left
 function InputWithIcon({
@@ -315,12 +326,94 @@ const ContactPage = () => {
                                         error={errors.budget}
                                         required
                                     />
+
+                                    <div>
+                                        <label className={contactPageStyles.inputLabel}>
+                                            Short Message{" "}
+                                            <span className={contactPageStyles.requiredStar}>*</span>
+                                        </label>
+                                        <textarea 
+                                            name="message" 
+                                            value={form.message}
+                                            onChange={handleChange}
+                                            rows={4}
+                                            className={`${contactPageStyles.textareaContainer} ${
+                                                errors.message
+                                                    ? contactPageStyles.inputError
+                                                    : contactPageStyles.inputNormal
+                                            }`} placeholder="Tell us what you are looking for..."
+                                            required>
+                                        </textarea>
+                                    </div>
+                                </div>
+
+                                <div className={contactPageStyles.buttonsContainer}>
+                                    <button
+                                        type="submit"
+                                        disabled={sending}
+                                        className={contactPageStyles.submitButton}
+                                    >
+                                        <Send className=" w-4 h-4" />
+                                        <span className="font-medium">Send via WhatsApp</span>
+                                    </button>
+
+                                    <button type="button" onClick={() => {
+                                        clearForm();
+                                        showToast("Form Cleared", "info");
+                                    }} className={contactPageStyles.clearButton}>
+                                        Clear
+                                    </button>
                                 </div>
                             </form>
                         </div>
                     </div>
+
+                    {/* RIGHT SIDE */}
+                    <div className={contactPageStyles.rightColumn}>
+                        <div className={contactPageStyles.rightColumn}>
+                            <CreativeCard
+                                title="Showroom Visits"
+                                subtitle="Private viewings by appointment"
+                                icon={<MapPin className=" w-6 h-6 text-black"/>}
+                                ctaText="Book Visit"
+                                ctaOnClick={() => {
+                                const msg = `Hi, I'd like to book a private showroom visit.`;
+                                window.open(
+                                `https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}&text=${encodeURIComponent(
+                                msg
+                                )}`,
+                                "_blank"
+                                );
+                                }}
+                                accent="amber"
+                            />
+                        </div>
+                    </div>
                 </div>
             </div>
+
+            {/* toast */}
+            {toast && (
+                <div
+                className={`${contactPageStyles.toastBase} ${
+                    toast.kind === "error"
+                    ? contactPageStyles.toastError
+                    : contactPageStyles.toastSuccess
+                }`}
+                >
+                {toast.kind === "success" ? (
+                    <Check className="w-4 h-4" />
+                ) : (
+                    <AlertCircle className="w-4 h-4" />
+                )}
+                <span>{toast.text}</span>
+                </div>
+            )}
+
+            {/* fonts */}
+            <style>{`
+                @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600&family=Playfair+Display:wght@400;600;700&display=swap');
+            `}</style>
         </div>
     );
 };
