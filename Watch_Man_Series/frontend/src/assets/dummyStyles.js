@@ -122,12 +122,12 @@ const cartPageStyles = {
   emptyCartButton: "px-6 py-3 font-semibold text-black bg-gradient-to-br from-gray-200 to-gray-400 rounded-full transition-all inline-block",
   
   // Header section
-  headerContainer: "flex flex-col sm:flex-row sm:items-center mb-6 sm:mb-8",
+  headerContainer: "flex flex-col sm:flex-row sm:items-center justify-between mb-6 sm:mb-8 gap-4",
   backButtonContainer: "flex items-center gap-2 text-gray-800 mb-4 sm:mb-0",
   backLink: "flex items-center gap-2 text-gray-800 cursor-pointer transition-colors",
   backIconContainer: "p-2 rounded-full bg-gradient-to-br from-gray-200 to-gray-400 shadow-md transition-all",
   backText: "font-medium",
-  cartTitle: "text-3xl xl:pt-20 xl:ml-65 ml-5 pt-5 md:ml-15 md:pt-20 lg:ml-50 font-[pacifico] font-bold text-gray-700",
+  cartTitle: "text-2xl sm:text-3xl font-[pacifico] font-bold text-gray-700",
   clearCartButton: "mt-4 sm:mt-0 sm:ml-auto text-red-500 cursor-pointer flex items-center gap-1",
   
   // Main grid
@@ -141,7 +141,7 @@ const cartPageStyles = {
   formTitle: "text-xl font-semibold mb-4 text-gray-800",
   formSubtitle: "text-sm text-gray-500 mb-4",
   form: "space-y-4",
-  inputGrid: "grid grid-cols-1 sm:grid-cols-2 gap-4",
+  inputGrid: "flex flex-col md:grid grid-cols-1 md:grid-cols-3 gap-4",
   
   // Common form inputs
   inputBase: "w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:shadow-md focus:scale-[1.01] transition-transform duration-150",
@@ -150,7 +150,7 @@ const cartPageStyles = {
   
   // Form buttons
   formButtonsContainer: "flex flex-col sm:flex-row gap-3",
-  submitButton: "flex-1 bg-gradient-to-r from-gray-300 to-gray-500 text-white py-3 rounded-full cursor-pointer transition-colors",
+  submitButton: "flex items-center justify-center flex-1 bg-gradient-to-r from-gray-300 to-gray-500 text-white py-3 rounded-full cursor-pointer transition-colors",
   continueShoppingButton: "px-6 py-3 border border-gray-500 text-black rounded-full transition-all text-center",
   
   // Cart items grid
@@ -537,8 +537,8 @@ export {  loginPageStyles };
 
 export const navbarStyles = {
   // Layout
-  header: "sticky top-4 z-50 pb-5 flex justify-center overflow-x-hidden",
-  nav: "bg-white shadow-lg rounded-lg xl:rounded-full sm:rounded-xl lg:rounded-full md:rounded-full px-4 sm:px-3 md:px-5 py-3 w-[95%] md:w-[90%] max-w-5xl overflow-visible",
+  header: "sticky top-4 z-50 pb-5 flex justify-center overflow-visible",
+  nav: "bg-white shadow-lg rounded-lg xl:rounded-full sm:rounded-xl lg:rounded-full md:rounded-full px-3 sm:px-4 md:px-5 py-3 w-[92%] sm:w-[95%] md:w-[90%] max-w-5xl overflow-visible",
   
   // Container
   container: "flex items-center justify-between",
@@ -548,7 +548,7 @@ export const navbarStyles = {
   logoContainer: "flex items-center justify-center rounded-full bg-gray-100 p-2 mr-3",
   logoIcon: "h-6 w-6 text-gray-800",
   logoLink: "flex items-baseline gap-2 select-none",
-  logoText: "text-lg sm:text-2xl md:text-2xl font-light tracking-wide",
+  logoText: "text-base sm:text-lg md:text-xl font-light tracking-wide",
   
   // Desktop Navigation
   desktopNav: "hidden md:flex items-center space-x-2",

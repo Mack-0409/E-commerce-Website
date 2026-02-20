@@ -1,37 +1,32 @@
 import React from 'react';
 import { comingSoonStyles } from '../assets/dummyStyles';
 
-import CS1 from "../assets/CS1.png";
-import CS2 from "../assets/CS2.png";
-import CS3 from "../assets/CS3.png";
-import CS4 from "../assets/CS4.png";
-import CS5 from "../assets/CS5.png";
 const watches = [
   {
     id: 1,
     name: "Norqain Independence",
     price: 619000,
-    imgUrl:CS1  },
+    imgUrl: "/CS1.png"  },
   {
     id: 2,
     name: "Zenith Chronomaster",
     price: 1069200,
-    imgUrl:CS2  },
+    imgUrl: "/CS2.png"  },
   {
     id: 3,
     name: "Jacob & Co. Epic X ",
     price: 3100000,
-    imgUrl:CS3  },
+    imgUrl: "/CS3.png"  },
   {
     id: 4,
     name: "Bvlgari Octo",
     price: 2450000,
-    imgUrl:CS4  },
+    imgUrl: "/CS4.png"  },
   {
     id: 5,
     name: "Louis Erard Excellence",
     price: 3300000,
-    imgUrl:CS5,
+    imgUrl: "/CS5.png",
   },
 ];
 

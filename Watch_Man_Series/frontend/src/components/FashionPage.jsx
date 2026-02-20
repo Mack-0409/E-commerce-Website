@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { watchOfferBannerStyles } from '../assets/dummyStyles';
-import F1 from '../assets/F1.png'; 
+import { watchOfferBannerStyles } from '../assets/dummyStyles'; 
 import { Heart , Shield , Truck } from "lucide-react";
 
 const FashionPage = () => {
@@ -110,7 +109,7 @@ const FashionPage = () => {
                 {/* Img */}
                 <div className={watchOfferBannerStyles.imageSection}>
                     <div className={watchOfferBannerStyles.imageOverlay}></div>
-                    <img src={F1} alt="img"className={watchOfferBannerStyles.image} />
+                    <img src="/F1.png" alt="img"className={watchOfferBannerStyles.image} />
 
                     <div className={watchOfferBannerStyles.priceTag}>
                         <div className={watchOfferBannerStyles.oldPrice}>$899.99</div>

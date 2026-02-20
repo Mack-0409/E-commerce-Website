@@ -1,9 +1,5 @@
 import React, { useEffect , useRef } from 'react';
 import { testimonialPageStyles } from '../assets/dummyStyles';
-import T1 from "../assets/T1.png";
-import T2 from "../assets/T2.png";
-import T3 from "../assets/T3.png";
-import T4 from "../assets/T4.png";
 
 const cards = [
   {
@@ -12,7 +8,7 @@ const cards = [
     meta: "Asha K. • July 5, 2025",
     excerpt:
       "I gifted the Swarovski piece to myself and it instantly became my go-to. The crystal detailing catches light in the most flattering way and the movement keeps perfect time — classy enough for gala nights, subtle enough for daily wear.",
-    img: T1,
+    img: "/T1.png",
   },
   {
     id: 2,
@@ -20,7 +16,7 @@ const cards = [
     meta: "Rohit S. • June 26, 2025",
     excerpt:
       "I wear my G-Shock for work, gym and weekend hikes — zero scratches so far. The shock resistance and battery life are absurdly good. If you want a worry-free daily watch, this one's unbeatable.",
-    img: T2,
+    img: "/T2.png",
   },
   {
     id: 3,
@@ -28,7 +24,7 @@ const cards = [
     meta: "Priya M. • May 15, 2025",
     excerpt:
       "The minimalist dial is gorgeous — thin case, clean lines and a strap that feels premium. It pairs perfectly with both office blazers and weekend denim. I get compliments every time I wear it.",
-    img: T3,
+    img: "/T3.png",
   },
   {
     id: 4,
@@ -36,7 +32,7 @@ const cards = [
     meta: "Arjun D. • May 2, 2025",
     excerpt:
       "A vintage look that still feels modern — the domed crystal and aged-lume give it character. It's become my conversation starter at dinners. Comfortable, well-built, and full of charm.",
-    img: T4,
+    img: "/T4.png",
   },
 ];
 

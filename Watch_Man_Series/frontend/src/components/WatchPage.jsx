@@ -70,7 +70,7 @@ const WatchPage = () => {
                         <div key={sid} className={watchPageStyles.card}>
                             <div className={watchPageStyles.imageContainer}>
                                 <img 
-                                    src={w.img} 
+                                    src={w.image} 
                                     alt={w.name}
                                     className={watchPageStyles.image}
                                     draggable={false} 

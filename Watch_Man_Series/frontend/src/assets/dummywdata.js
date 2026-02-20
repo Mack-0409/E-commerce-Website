@@ -1,23 +1,10 @@
-import W1 from "../assets/W1.png"
-import W2 from "../assets/W2.png"
-import W3 from "../assets/W3.png"
-import W4 from "../assets/W4.png"
-import W5 from "../assets/W5.png"
-import W6 from "../assets/W6.png"
-import W7 from "../assets/W7.png"
-import W8 from "../assets/W8.png"
-import W9 from "../assets/W9.png"
-import W10 from "../assets/W10.png"
-import W11 from "../assets/W11.png"
-import W12 from "../assets/W12.png"
-
 export const WATCHES = [
   {
     id: 1,
     name: "JACOB & CO. EPIC X",
     desc: "Automatic • Sport Strap",
     price: "₹ 6,19,000",
-    img: W1,
+    image: "/W1.png",
     gender: "men",
   },
   {
@@ -25,7 +12,7 @@ export const WATCHES = [
     name: "H. MOSER & CIE.",
     desc: "Chronograph • Leather",
     price: "₹ 10,69,200",
-    img: W2,
+    image: "/W2.png",
     gender: "men",
   },
   {
@@ -33,7 +20,7 @@ export const WATCHES = [
     name: "BVLGARI OCTO",
     desc: "Limited Edition • Bold",
     price: "₹ 31,00,000",
-    img: W3,
+    image: "/W3.png",
     gender: "men",
   },
   {
@@ -41,7 +28,7 @@ export const WATCHES = [
     name: "IWC PORTUGIESER",
     desc: "Skeleton • Titanium",
     price: "₹ 24,50,000",
-    img:W4,
+    image: "/W4.png",
     gender: "men",
   },
   {
@@ -49,7 +36,7 @@ export const WATCHES = [
     name: "BELL & ROSS URBAN",
     desc: "Minimal • Purple Dial",
     price: "₹ 33,00,000",
-    img:W5,
+    image: "/W5.png",
     gender: "men",
   },
   {
@@ -57,7 +44,7 @@ export const WATCHES = [
     name: "D1 MILANO",
     desc: "Classic • Dress",
     price: "₹ 38,40,000",
-    img: W6,
+    image: "/W6.png",
     gender: "men",
   },
   {
@@ -65,7 +52,7 @@ export const WATCHES = [
     name: "LONGINES ELEGANCE",
     desc: "Quartz • Mesh Strap",
     price: "₹ 2,99,000",
-    img:W7,
+    image: "/W7.png",
     gender: "women",
   },
   {
@@ -73,7 +60,7 @@ export const WATCHES = [
     name: "RADO CENTRIX",
     desc: "Slim • Steel",
     price: "₹ 1,49,000",
-    img: W8,
+    image: "/W8.png",
     gender: "women",
   },
   {
@@ -81,7 +68,7 @@ export const WATCHES = [
     name: "BVLGARI SERPENTI",
     desc: "Slim • Steel",
     price: "₹ 1,49,000",
-    img: W9,
+    image: "/W9.png",
     gender: "women",
   },
   {
@@ -89,7 +76,7 @@ export const WATCHES = [
     name: "ORIS AQUIS",
     desc: "Slim • Steel",
     price: "₹ 1,49,000",
-    img: W10,
+    image: "/W10.png",
     gender: "women",
   },
   {
@@ -97,7 +84,7 @@ export const WATCHES = [
     name: "OMEGA",
     desc: "Slim • Steel",
     price: "₹ 1,49,000",
-    img:W11,
+    image: "/W11.png",
     gender: "women",
   },
   {
@@ -105,7 +92,7 @@ export const WATCHES = [
     name: "MASERATI LIFESTYLE",
     desc: "Slim • Steel",
     price: "₹ 1,49,000",
-    img: W12,
+    image: "/W12.png",
     gender: "women",
   },
 ];
