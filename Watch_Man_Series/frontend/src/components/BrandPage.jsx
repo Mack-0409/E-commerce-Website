@@ -103,7 +103,7 @@ const BrandPage = () => {
                                                 id: watch.id,
                                                 name: watch.name,
                                                 price: watch.price,
-                                                img: watch.img,
+                                                image: watch.image,
                                             })} className={brandPageStyles.addButton}>
                                                 <span>Add</span>
                                             </button>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import  { navbarStyles } from "../assets/dummyStyles";
-import { BaggageClaim, Clock, Menu, User } from 'lucide-react';
+import { BaggageClaim, Clock, Menu, User, X } from 'lucide-react';
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useCart } from "../CartContext";
 

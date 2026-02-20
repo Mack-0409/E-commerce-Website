@@ -1,10 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { bannerHomeStyles } from '../assets/dummyStyles';
 import Navbar from "./Navbar";
-import Video  from "../assets/bannervideo.mp4";
-import BL1 from '../assets/BL1.png';
-import BM1 from '../assets/BM1.png';
-import BR1 from '../assets/BR1.png';
 
 const BannerHome =  () => {
   const videoRef = useRef(null);
@@ -29,7 +25,7 @@ const BannerHome =  () => {
           <video ref={videoRef} className={bannerHomeStyles.video}
           autoPlay muted loop playsInline preload="metadata"
           poster="/fallback.jpg" roles="presentation">
-            <source src={Video} type="video/mp4" />
+            <source src="/bannervideo.mp4" type="video/mp4" />
           </video>
         </div>
 
@@ -51,7 +47,7 @@ const BannerHome =  () => {
 
               <div className={`${bannerHomeStyles.cardWrapper} ${bannerHomeStyles.leftCardTransform}`}>
                 <div className={`${bannerHomeStyles.cardBase} ${bannerHomeStyles.cardPadding}`}>
-                  <img src={BL1} alt="left logo" className={`${bannerHomeStyles.cardImage} ${bannerHomeStyles.leftCardImage}`} loading="lazy" />
+                  <img src="/BL1.png" alt="left logo" className={`${bannerHomeStyles.cardImage} ${bannerHomeStyles.leftCardImage}`} loading="lazy" />
                 </div>
                 <p className={`${bannerHomeStyles.cardLabel} ${bannerHomeStyles.cardLabelGray}`}>
                   Classic Heritage
@@ -60,7 +56,7 @@ const BannerHome =  () => {
 
               <div className={`${bannerHomeStyles.cardWrapper} ${bannerHomeStyles.middleCardTransform}`}>
                 <div className={`${bannerHomeStyles.cardMiddle} ${bannerHomeStyles.cardPadding}`}>
-                  <img src={BM1} alt="middle logo" className={`${bannerHomeStyles.cardImage} ${bannerHomeStyles.middleCardImage}`} loading="lazy" />
+                  <img src="/BM1.png" alt="middle logo" className={`${bannerHomeStyles.cardImage} ${bannerHomeStyles.middleCardImage}`} loading="lazy" />
                 </div>
                 <p className={`${bannerHomeStyles.cardLabel} ${bannerHomeStyles.cardLabelYellow}`}>
                   Limited Edition
@@ -69,7 +65,7 @@ const BannerHome =  () => {
 
               <div className={`${bannerHomeStyles.cardWrapper} ${bannerHomeStyles.rightCardTransform}`}>
                 <div className={`${bannerHomeStyles.cardBase} ${bannerHomeStyles.cardPadding}`}>
-                  <img src={BR1} alt="left logo" className={`${bannerHomeStyles.cardImage} ${bannerHomeStyles.rightCardImage}`} loading="lazy" />
+                  <img src="/BR1.png" alt="left logo" className={`${bannerHomeStyles.cardImage} ${bannerHomeStyles.rightCardImage}`} loading="lazy" />
                 </div>
                 <p className={`${bannerHomeStyles.cardLabel} ${bannerHomeStyles.cardLabelGray}`}>
                   Modern Precision
