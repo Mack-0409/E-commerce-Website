@@ -83,7 +83,7 @@ const Navbar = () => {
                             styles={navbarStyles.logoTextStyle} 
                             className={navbarStyles.logoText}>
                             
-                            ChronoElite
+                            Urban Time
                         </span>    
 
                         </Link>
