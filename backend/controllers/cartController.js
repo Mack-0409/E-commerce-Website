@@ -95,9 +95,129 @@ export async function getCart(req, res) {
 }
 
 // to update th watch in cart
+export async function updateCartItem(req, res) {
+    try {
+        const userId = req.user?._id;
+        if (!userId) return res.status(401).json({ 
+            success: false, 
+            message: "Unauthorized" 
+        });
 
+        const { productId, quantity } = req.body;
+        if (!productId || !quantity) {
+            return res.status(400).json({
+                success: false,
+                messagep: "Valid productId and qty are required"
+            });
+        }
 
+        const cart = await cartModel.findOne({ user: userId});
+        if (!cart) return res.status(404).json({
+            success: false,
+            message: "Cart not found"
+        });
 
+        // to update
+        const idx = cart.items.findIndex((it) => String(it.productId) === String(productId));
+        if (idx === -1) return res.status(404).json({ 
+            success: false, 
+            message: "Item not found in cart." 
+        });
+
+        if (quantity === 0) cart.items.splice(idx, 1);
+        else cart.items[idx].qty = quantity;
+
+        await cart.save();
+        return res.status(200).json({
+            success: true,
+            message: "Cart Updated",
+            cart
+        });
+    } 
+    
+    catch (error) {
+        console.error("getCart error:", error);
+        return res.status(500).json({ 
+            success: false, 
+            message: "Error updating cart", 
+            error: error.message 
+        });
+    }
+}
+
+// to remove watch from cart
+export async function removeCartItem(req, res) {
+    try {
+        const userId = req.user?._id;
+        if (!userId) return res.status(401).json({ 
+            success: false, 
+            message: "Unauthorized" 
+        });
+        
+        const { productId } = req.params;
+        if (!productId) return res.status(400).json({
+            success: false,
+            message: "Product is required"
+        });
+        
+        const cart = await cartModel.findOne({ user: userId});
+        if (!cart) return res.status(404).json({
+            success: false,
+            message: "Cart not found"
+        });
+
+        cart.items = cart.items.filter((it) => String(it.productId) !== String(productId));
+        return res.status(200).json({
+            success: true,
+            message: "Item removed",
+            cart
+        });
+    } 
+    
+    catch (error) {
+        console.error("remove from Cart error:", error);
+        return res.status(500).json({ 
+            success: false, 
+            message: "Error removing items from cart", 
+            error: error.message 
+        });
+    }
+}
+
+// to clear the cart immediately
+export const clearUserCart = async (req, res) => {
+    try {
+        const userId = req.user?._id;
+        if (!userId) return res.status(401).json({ 
+            success: false, 
+            message: "Unauthorized" 
+        });
+        
+        const cart = await cartModel.findOne({ user: userId});
+        if (!cart) return res.status(200).json({
+            success: true,
+            message: "Cart is empty already",
+            cart: { items: [] }
+        }); 
+
+        cart.item = [];
+        await cart.save();
+        return res.status(200).json({
+            success: true,
+            message: "Cart clear successfully",
+            cart
+        });
+    } 
+    
+    catch (error) {
+        console.error("clearCart error:", error);
+        return res.status(500).json({ 
+            success: false, 
+            message: "Error clearing the cart", 
+            error: error.message 
+        });
+    }
+}
 
 
 
