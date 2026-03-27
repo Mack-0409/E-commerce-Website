@@ -31,7 +31,7 @@ export const bannerHomeStyles = {
   
   // Card labels
   cardLabel: "mt-3 font-light text-sm sm:text-base",
-  cardLabelGray: "text-gray-300",
+  cardLabelGray: "text-white",
   cardLabelYellow: "text-yellow-500",
   
   // Transforms
@@ -51,10 +51,10 @@ export const bannerHomeStyles = {
 
 export const brandPageStyles = {
   // Layout styles
-  container: "min-h-screen flex items-center justify-center p-6 bg-gray-50",
-  notFoundCard: "max-w-lg text-center bg-white rounded-2xl shadow-lg p-8 border border-amber-200",
-  notFoundTitle: "text-2xl font-semibold mb-4 text-gray-800",
-  notFoundText: "text-gray-600 mb-6",
+  container: "min-h-screen flex items-center justify-center p-6 bg-gray-50 dark:bg-gray-900 transition-colors duration-300",
+  notFoundCard: "max-w-lg text-center bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-8 border border-amber-200 dark:border-amber-700",
+  notFoundTitle: "text-2xl font-semibold mb-4 text-gray-800 dark:text-white",
+  notFoundText: "text-gray-600 dark:text-gray-400 mb-6",
   goBackButton: "px-6 py-3 bg-gray-500 text-white rounded-full hover:bg-amber-600 transition-all flex items-center justify-center gap-2 mx-auto",
   
   // Main container
@@ -63,19 +63,19 @@ export const brandPageStyles = {
   // Header
   headerContainer: "flex flex-col sm:flex-row items-center sm:items-start justify-between mb-8 gap-6",
   backButtonContainer: "flex items-center z-10",
-  backButton: "flex items-center gap-2 text-gray-800 cursor-pointer transition-colors group",
-  backIcon: "p-2 rounded-full bg-gradient-to-r from-gray-300 to-gray-400 shadow-md transition-all",
+  backButton: "flex items-center gap-2 text-gray-800 dark:text-white cursor-pointer transition-colors group",
+  backIcon: "p-2 rounded-full bg-gradient-to-r from-gray-300 to-gray-400 dark:from-gray-600 dark:to-gray-500 shadow-md transition-all",
   backText: "font-medium hidden sm:inline",
   
   // Title
   titleContainer: "flex-1 flex flex-col items-center justify-center z-10",
-  title: "text-3xl sm:text-4xl md:text-5xl font-bold bg-white text-black rounded-full border border-gray-400 px-6 py-2 font-[pacifico] capitalize drop-shadow-md w-fit text-center",
+  title: "text-3xl sm:text-4xl md:text-5xl font-bold bg-white dark:bg-gray-800 text-black dark:text-white rounded-full border border-gray-400 dark:border-gray-600 px-6 py-2 font-[pacifico] capitalize drop-shadow-md w-fit text-center",
   
   // Watch Grid
   grid: "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-6 relative z-10",
   
   // Watch Card
-  card: "bg-white/95 backdrop-blur-sm rounded-xl overflow-hidden border border-gray-200 shadow-md hover:shadow-xl transition-all duration-300 group",
+  card: "bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 shadow-md hover:shadow-xl transition-all duration-300 group",
   
   // Image Container
   imageContainer: "relative h-48 md:h-56 lg:h-64 xl:h-55 overflow-hidden flex items-center justify-center p-4",
@@ -83,20 +83,20 @@ export const brandPageStyles = {
   
   // Details Container
   detailsContainer: "p-4",
-  watchName: "font-semibold text-gray-800 text-lg sm:text-xl mb-1 font-[pacifico] truncate",
-  watchDesc: "text-gray-600 text-sm mb-3 line-clamp-2 h-10",
+  watchName: "font-semibold text-gray-800 dark:text-white text-lg sm:text-xl mb-1 font-[pacifico] truncate",
+  watchDesc: "text-gray-600 dark:text-gray-400 text-sm mb-3 line-clamp-2 h-10",
   
   // Price and Controls
   priceAndControls: "flex items-center justify-between",
-  price: "text-lg font-semibold text-gray-600",
+  price: "text-lg font-semibold text-gray-600 dark:text-gray-400",
   
   // Quantity Controls
-  quantityContainer: "flex items-center gap-2 bg-gray-100 rounded-full px-2 py-1",
+  quantityContainer: "flex items-center gap-2 bg-gray-100 dark:bg-gray-700 rounded-full px-2 py-1",
   quantityButton: "p-1 rounded-full cursor-pointer transition",
   quantityCount: "px-3 text-sm font-medium w-10 text-center",
   
   // Add Button
-  addButton: "flex items-center cursor-pointer bg-gray-300 gap-1 hover:bg-gradient-to-r from-gray-300 to-gray-500 text-black px-3 py-1.5 rounded-xl transition-all duration-200 text-sm"
+  addButton: "flex items-center cursor-pointer bg-gray-300 dark:bg-gray-600 gap-1 hover:bg-gradient-to-r from-gray-300 to-gray-500 dark:from-gray-600 dark:to-gray-500 text-black dark:text-white px-3 py-1.5 rounded-xl transition-all duration-200 text-sm"
 };
 
 // For other components, you can add more style objects
@@ -110,24 +110,24 @@ export const sharedStyles = {
 
 const cartPageStyles = {
   // Page layout
-  pageContainer: "min-h-screen bg-gray-50 py-6 sm:py-8 md:py-10 lg:py-8 px-4 sm:px-6 md:px-8 lg:px-10",
+  pageContainer: "min-h-screen bg-gray-50 dark:bg-gray-900 py-6 sm:py-8 md:py-10 lg:py-8 px-4 sm:px-6 md:px-8 lg:px-10 transition-colors duration-300",
   maxWidthContainer: "max-w-6xl mx-auto",
   
   // Empty cart state
-  emptyCartContainer: "min-h-screen bg-gray-50 flex items-center justify-center p-6",
-  emptyCartCard: "max-w-md text-center bg-white rounded-2xl shadow-lg p-8 border border-gray-200",
+  emptyCartContainer: "min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center p-6 transition-colors duration-300",
+  emptyCartCard: "max-w-md text-center bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-8 border border-gray-200 dark:border-gray-700",
   emptyCartIcon: "mx-auto text-gray-400 mb-4",
-  emptyCartTitle: "text-2xl font-semibold mb-4 text-gray-800",
-  emptyCartText: "text-gray-600 mb-6",
-  emptyCartButton: "px-6 py-3 font-semibold text-black bg-gradient-to-br from-gray-200 to-gray-400 rounded-full transition-all inline-block",
+  emptyCartTitle: "text-2xl font-semibold mb-4 text-gray-800 dark:text-white",
+  emptyCartText: "text-gray-600 dark:text-gray-400 mb-6",
+  emptyCartButton: "px-6 py-3 font-semibold text-black dark:text-white bg-gradient-to-br from-gray-200 to-gray-400 dark:from-gray-700 dark:to-gray-600 rounded-full transition-all inline-block",
   
   // Header section
   headerContainer: "flex flex-col sm:flex-row sm:items-center justify-between mb-6 sm:mb-8 gap-4",
-  backButtonContainer: "flex items-center gap-2 text-gray-800 mb-4 sm:mb-0",
-  backLink: "flex items-center gap-2 text-gray-800 cursor-pointer transition-colors",
-  backIconContainer: "p-2 rounded-full bg-gradient-to-br from-gray-200 to-gray-400 shadow-md transition-all",
+  backButtonContainer: "flex items-center gap-2 text-gray-800 dark:text-white mb-4 sm:mb-0",
+  backLink: "flex items-center gap-2 text-gray-800 dark:text-white cursor-pointer transition-colors",
+  backIconContainer: "p-2 rounded-full bg-gradient-to-br from-gray-200 to-gray-400 dark:from-gray-700 dark:to-gray-600 shadow-md transition-all",
   backText: "font-medium",
-  cartTitle: "text-2xl sm:text-3xl font-[pacifico] font-bold text-gray-700",
+  cartTitle: "text-2xl sm:text-3xl font-[pacifico] font-bold text-gray-700 dark:text-gray-200",
   clearCartButton: "mt-4 sm:mt-0 sm:ml-auto text-red-500 cursor-pointer flex items-center gap-1",
   
   // Main grid
@@ -137,44 +137,44 @@ const cartPageStyles = {
   leftColumn: "lg:col-span-2 space-y-6 order-1",
   
   // Form container
-  formContainer: "bg-white font-[pacifico] rounded-xl shadow-md p-6",
-  formTitle: "text-xl font-semibold mb-4 text-gray-800",
-  formSubtitle: "text-sm text-gray-500 mb-4",
+  formContainer: "bg-white dark:bg-gray-800 font-[pacifico] rounded-xl shadow-md p-6 transition-colors duration-300",
+  formTitle: "text-xl font-semibold mb-4 text-gray-800 dark:text-white",
+  formSubtitle: "text-sm text-gray-500 dark:text-gray-400 mb-4",
   form: "space-y-4",
   inputGrid: "flex flex-col md:grid grid-cols-1 md:grid-cols-3 gap-4",
   
   // Common form inputs
-  inputBase: "w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:shadow-md focus:scale-[1.01] transition-transform duration-150",
-  textareaBase: "w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:shadow-md focus:scale-[1.01] transition-transform duration-150 resize-y",
-  selectBase: "w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:shadow-md focus:scale-[1.01] transition-transform duration-150",
+  inputBase: "w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:shadow-md focus:scale-[1.01] transition-transform duration-150",
+  textareaBase: "w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:shadow-md focus:scale-[1.01] transition-transform duration-150 resize-y",
+  selectBase: "w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:shadow-md focus:scale-[1.01] transition-transform duration-150",
   
   // Form buttons
   formButtonsContainer: "flex flex-col sm:flex-row gap-3",
-  submitButton: "flex items-center justify-center flex-1 bg-gradient-to-r from-gray-300 to-gray-500 text-white py-3 rounded-full cursor-pointer transition-colors",
-  continueShoppingButton: "px-6 py-3 border border-gray-500 text-black rounded-full transition-all text-center",
+  submitButton: "flex items-center justify-center flex-1 bg-gradient-to-r from-gray-300 to-gray-500 dark:from-gray-600 dark:to-gray-700 text-white py-3 rounded-full cursor-pointer transition-colors",
+  continueShoppingButton: "px-6 py-3 border border-gray-500 dark:border-gray-400 text-black dark:text-white rounded-full transition-all text-center",
   
   // Cart items grid
   cartItemsGrid: "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-6",
   
   // Individual cart item
-  cartItemCard: "bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 hover:shadow-lg transition-all duration-300",
+  cartItemCard: "bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden border border-gray-100 dark:border-gray-700 hover:shadow-lg transition-all duration-300",
   cartItemImageContainer: "relative h-48 overflow-hidden flex items-center justify-center p-4",
   cartItemImage: "h-full w-full object-contain transition-transform duration-500",
   cartItemContent: "p-4",
-  cartItemName: "font-semibold text-gray-800 text-lg mb-1 truncate",
-  cartItemPrice: "text-gray-600 font-semibold text-md mb-4",
+  cartItemName: "font-semibold text-gray-800 dark:text-white text-lg mb-1 truncate",
+  cartItemPrice: "text-gray-600 dark:text-gray-400 font-semibold text-md mb-4",
   quantityContainer: "flex items-center justify-between",
-  quantityControls: "flex items-center gap-2 bg-gray-200 rounded-full px-3 py-1",
-  quantityButton: "text-gray-600 cursor-pointer p-1",
+  quantityControls: "flex items-center gap-2 bg-gray-200 dark:bg-gray-700 rounded-full px-3 py-1",
+  quantityButton: "text-gray-600 dark:text-gray-300 cursor-pointer p-1",
   quantityText: "text-sm font-medium w-6 text-center",
   removeButton: "text-red-500 cursor-pointer p-2",
   
   // Order summary (right column)
-  orderSummaryContainer: "bg-white rounded-xl shadow-md p-6 order-2",
-  orderSummaryTitle: "text-xl font-semibold mb-6 text-gray-800 border-b pb-2",
+  orderSummaryContainer: "bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 order-2 transition-colors duration-300",
+  orderSummaryTitle: "text-xl font-semibold mb-6 text-gray-800 dark:text-white border-b pb-2",
   orderSummaryContent: "space-y-4 mb-6",
   summaryRow: "flex justify-between",
-  summaryLabel: "text-gray-600",
+  summaryLabel: "text-gray-600 dark:text-gray-400",
   summaryValue: "font-medium",
   totalContainer: "flex justify-between items-center text-lg font-bold border-t pt-4 mb-6",
 };
@@ -185,32 +185,32 @@ export default cartPageStyles;
 
 export const categoriesHomeStyles = {
   // Layout
-  section: "min-h-screen bg-gradient-to-br from-gray-50 to-white py-12 px-4",
+  section: "min-h-screen bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 py-12 px-4 transition-colors duration-300",
   container: "max-w-7xl mx-auto",
   
   // Header
   header: "text-center mb-12",
-  h1: "font-light text-gray-900 mb-4 leading-tight",
+  h1: "font-light text-gray-900 dark:text-white mb-4 leading-tight",
   h1SpanRegular: "inline",
   h1SpanAccent: "text-amber-600 ml-3 font-medium",
   underline: "w-24 h-1 bg-gradient-to-r from-amber-400 to-amber-600 mx-auto mb-6 rounded-full",
-  subtext: "text-gray-600 max-w-2xl mx-auto text-base md:text-lg",
+  subtext: "text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-base md:text-lg",
   
   // Grid
   grid: "grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6 md:gap-8",
   
   // Cards
   cardLink: "group block focus:outline-none",
-  cardWrapper: "relative overflow-hidden rounded-xl border transition-shadow duration-300 bg-white shadow-sm hover:shadow-lg focus:shadow-lg border-gray-200",
-  imageContainer: "w-full aspect-square bg-gray-50 flex items-center justify-center overflow-hidden",
+  cardWrapper: "relative overflow-hidden rounded-xl border transition-shadow duration-300 bg-white dark:bg-gray-800 shadow-sm hover:shadow-lg focus:shadow-lg border-gray-200 dark:border-gray-700",
+  imageContainer: "w-full aspect-square bg-gray-50 dark:bg-gray-700 flex items-center justify-center overflow-hidden",
   image: "w-full h-full object-cover transform transition-transform duration-500",
   
   // Card content
   cardContent: "p-3 md:p-4 text-center",
   cardTitleBase: "text-sm md:text-base font-medium truncate transition-colors duration-300",
   cardTitleHover: "text-amber-600",
-  cardTitleNormal: "text-gray-800",
-  cardTagline: "text-xs text-gray-500 mt-1 hidden md:block",
+  cardTitleNormal: "text-gray-800 dark:text-white",
+  cardTagline: "text-xs text-gray-500 dark:text-gray-400 mt-1 hidden md:block",
   
   // Focus ring
   focusRing: "absolute inset-0 pointer-events-none ring-0 focus:ring-4 focus:ring-amber-200",
@@ -233,16 +233,16 @@ export const categoriesHomeStyles = {
 // Add to existing dummyStyles.js
 export const comingSoonStyles = {
   // Section styles
-  section: "bg-white text-gray-900 py-12",
+  section: "bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 py-12 transition-colors duration-300",
   container: "max-w-7xl mx-auto px-6 lg:px-12",
   
   // Header
   headerContainer: "flex items-center justify-between mb-8",
   titleContainer: "",
-  title: "text-2xl md:text-3xl tracking-wide uppercase",
+  title: "text-2xl md:text-3xl tracking-wide uppercase text-white dark:text-white",
   titleStyle: { fontFamily: "'Playfair Display', serif" },
-  subtitle: "text-sm text-gray-500 mt-1 uppercase tracking-wider",
-  viewAllLink: "text-sm text-gray-600 hover:text-gray-900 uppercase tracking-wide",
+  subtitle: "text-sm text-gray-300 dark:text-gray-400 mt-1 uppercase tracking-wider",
+  viewAllLink: "text-sm text-white dark:text-gray-300 hover:text-gray-900 dark:hover:text-white uppercase tracking-wide",
   
   // Watches Container
   watchesContainer: "w-full overflow-x-auto",
@@ -255,8 +255,8 @@ export const comingSoonStyles = {
   
   // Figcaption
   figcaption: "mt-6 text-center",
-  watchName: "text-xs md:text-sm uppercase tracking-widest text-gray-700 font-semibold",
-  price: "mt-3 text-sm text-gray-600",
+  watchName: "text-xs md:text-sm uppercase tracking-widest text-white dark:text-white font-semibold",
+  price: "mt-3 text-sm text-gray-200 dark:text-gray-300",
   
   // Function for formatting (keep as helper)
   formatINR: (n) => `₹ ${n.toLocaleString("en-IN")}`
@@ -266,35 +266,35 @@ export const comingSoonStyles = {
 
 const contactPageStyles = {
   // Page layout
-  pageContainer: "min-h-screen bg-gradient-to-b from-white to-gray-50 py-12 sm:py-16 md:py-16 px-4 sm:px-6 md:px-8 lg:px-12",
+  pageContainer: "min-h-screen bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800 py-12 sm:py-16 md:py-16 px-4 sm:px-6 md:px-8 lg:px-12 transition-colors duration-300",
   innerContainer: "max-w-7xl mx-auto",
   
   // Header section
   pageHeader: "text-center mb-8 sm:mb-10 md:mb-10",
-  pageTitle: "text-3xl sm:text-4xl md:text-5xl font-medium",
-  pageSubtitle: "mt-2 text-gray-500 max-w-2xl mx-auto text-sm sm:text-base",
+  pageTitle: "text-3xl sm:text-4xl md:text-5xl font-medium dark:text-white",
+  pageSubtitle: "mt-2 text-gray-500 dark:text-gray-400 max-w-2xl mx-auto text-sm sm:text-base",
   
   // Main grid
   mainGrid: "grid grid-cols-1 md:grid-cols-1 lg:grid-cols-12 gap-6 md:gap-8 lg:gap-8 items-start",
   
   // Left column - Form
   leftColumn: "lg:col-span-7 order-1 lg:order-1",
-  formCard: "bg-white rounded-3xl shadow-2xl border border-gray-100 p-6 sm:p-8 md:p-8 lg:p-8",
+  formCard: "bg-white dark:bg-gray-800 rounded-3xl shadow-2xl border border-gray-100 dark:border-gray-700 p-6 sm:p-8 md:p-8 lg:p-8 transition-colors duration-300",
   form: "space-y-5",
   inputGrid: "grid grid-cols-1 sm:grid-cols-2 gap-4",
   
   // Input styles
-  inputLabel: "text-sm text-gray-600",
+  inputLabel: "text-sm text-gray-600 dark:text-gray-300",
   requiredStar: "text-red-500",
   inputContainer: "mt-2 relative",
   inputIconContainer: "absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none",
-  inputBase: "w-full rounded-xl border px-4 py-3 pl-12 text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-400 transition",
-  inputNormal: "border-gray-200",
+  inputBase: "w-full rounded-xl border px-4 py-3 pl-12 text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-400 transition bg-white dark:bg-gray-700 border-gray-200 dark:border-gray-600 text-gray-900 dark:text-white",
+  inputNormal: "border-gray-200 dark:border-gray-600",
   inputError: "border-rose-400",
   errorMessage: "text-rose-500 text-xs mt-1 flex items-center gap-2",
   
   // Textarea
-  textareaContainer: "mt-2 w-full rounded-xl border px-4 py-3 text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-400 transition",
+  textareaContainer: "mt-2 w-full rounded-xl border px-4 py-3 text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-400 transition bg-white dark:bg-gray-700 border-gray-200 dark:border-gray-600 text-gray-900 dark:text-white",
   
   // Form buttons
   buttonsContainer: "flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4",
@@ -333,7 +333,7 @@ export { contactPageStyles };
 
 export const watchOfferBannerStyles = {
   // Layout
-  container: "min-h-screen -mx-2 xl:-mx-0 md:-mx-0 flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 p-4",
+  container: "min-h-screen -mx-2 xl:-mx-0 md:-mx-0 flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 p-4 transition-colors duration-300",
   maxWidthContainer: "max-w-6xl w-full",
   
   // Banner
@@ -347,6 +347,7 @@ export const watchOfferBannerStyles = {
   decorativeSmall: "absolute w-16 h-16 rounded-full border-4 border-gold/20 bottom-12 -right-8",
   
   // Offer tag
+  offer: "bg-gold text-white text-sm font-semibold px-4 py-2 rounded-full inline-block mb-6 self-start animate-pulse",
   offerTag: "bg-gold text-white text-sm font-semibold px-4 py-2 rounded-full inline-block mb-6 self-start animate-pulse",
   
   // Heading
@@ -374,9 +375,9 @@ export const watchOfferBannerStyles = {
   image: "w-full h-full object-cover transition-transform duration-700 hover:scale-105",
   
   // Price Tag
-  priceTag: "absolute bottom-6 right-6 bg-white/90 backdrop-blur-sm rounded-lg p-4 text-center shadow-lg",
-  oldPrice: "text-xs text-gray-600 line-through",
-  newPrice: "text-2xl font-bold text-navy",
+  priceTag: "absolute bottom-6 right-6 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-lg p-4 text-center shadow-lg",
+  oldPrice: "text-xs text-gray-600 dark:text-gray-400 line-through",
+  newPrice: "text-2xl font-bold text-navy dark:text-white",
   discount: "text-xs text-gold font-semibold",
   
   // Inline styles
@@ -386,7 +387,7 @@ export const watchOfferBannerStyles = {
 // Add to existing dummyStyles.js
 export const footerStyles = {
   // Main container
-  footer: "relative bg-gradient-to-b from-gray-50 to-gray-100 text-gray-800 overflow-hidden",
+  footer: "relative bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 text-gray-800 dark:text-gray-200 overflow-hidden transition-colors duration-300",
   topBorder: "absolute top-0 left-0 w-full h-1 bg-gradient-to-br from-gray-300 to-gray-500",
   patternOverlay: "absolute inset-0 opacity-5",
   
@@ -394,15 +395,15 @@ export const footerStyles = {
   mainContainer: "max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-10 relative z-10",
   
   // Newsletter section
-  newsletterSection: "py-12 border-b border-gray-200 border-dashed",
+  newsletterSection: "py-12 border-b border-gray-200 dark:border-gray-700 border-dashed",
   newsletterContent: "text-center",
-  newsletterTitle: "text-2xl font-serif font-bold text-gray-900 mb-4",
-  newsletterText: "text-gray-600 max-w-2xl mx-auto mb-6",
+  newsletterTitle: "text-2xl font-serif font-bold text-gray-900 dark:text-white mb-4",
+  newsletterText: "text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-6",
   
   // Newsletter form
   formContainer: "flex flex-col sm:flex-row justify-center items-center max-w-md mx-auto",
-  emailInput: "px-4 py-3 w-full rounded-t-lg sm:rounded-l-lg sm:rounded-r-none rounded-b-lg sm:mb-0 mb-3 border border-gray-300 focus:outline-none",
-  subscribeButton: "px-6 py-3 bg-gradient-to-br from-gray-300 to-gray-500 text-white font-medium rounded-b-lg sm:rounded-r-lg sm:rounded-l-none rounded-t-lg transition-colors shadow-md hover:shadow-lg",
+  emailInput: "px-4 py-3 w-full rounded-t-lg sm:rounded-l-lg sm:rounded-r-none rounded-b-lg sm:mb-0 mb-3 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none",
+  subscribeButton: "px-6 py-3 bg-gradient-to-br from-gray-300 to-gray-500 dark:from-gray-600 dark:to-gray-700 text-white font-medium rounded-b-lg sm:rounded-r-lg sm:rounded-l-none rounded-t-lg transition-colors shadow-md hover:shadow-lg",
   
   // Main footer grid
   mainGrid: "py-12 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8",
@@ -412,38 +413,38 @@ export const footerStyles = {
   brandContainer: "flex items-center",
   brandIconContainer: "relative",
   brandIconPing: "absolute inset-0 rounded-full bg-amber-200 animate-ping opacity-20",
-  brandIcon: "h-10 w-10 text-gray-500 relative z-10",
-  brandName: "ml-3 text-2xl font-bold font-serif bg-black bg-clip-text text-transparent",
-  brandDescription: "text-sm text-gray-600 max-w-xs leading-relaxed",
+  brandIcon: "h-10 w-10 text-gray-500 dark:text-gray-400 relative z-10",
+  brandName: "ml-3 text-2xl font-bold font-serif text-white dark:text-white",
+  brandDescription: "text-sm text-gray-600 dark:text-gray-400 max-w-xs leading-relaxed",
   socialIconsContainer: "flex space-x-4 pt-2",
-  socialIcon: "h-10 w-10 rounded-full bg-white flex items-center justify-center hover:text-black text-gray-500 transition-all duration-300 shadow-sm hover:shadow-md",
+  socialIcon: "h-10 w-10 rounded-full bg-white dark:bg-gray-700 flex items-center justify-center hover:text-black dark:hover:text-white text-gray-500 transition-all duration-300 shadow-sm hover:shadow-md",
   socialIconInner: "h-5 w-5",
   
   // Section headings
-  sectionHeading: "text-lg font-serif font-semibold text-gray-900 mb-4 flex items-center",
-  sectionIcon: "h-5 w-5 text-gray-500 mr-1",
+  sectionHeading: "text-lg font-serif font-semibold text-gray-900 dark:text-white mb-4 flex items-center",
+  sectionIcon: "h-5 w-5 text-gray-500 dark:text-gray-400 mr-1",
   
   // Links lists
   linksList: "space-y-3",
-  linkItem: "text-sm text-gray-600 hover:text-black transition-colors flex items-center group w-fit",
-  linkIcon: "h-4 w-4 text-black opacity-0 group-hover:opacity-100 transition-opacity mr-1",
+  linkItem: "text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors flex items-center group w-fit",
+  linkIcon: "h-4 w-4 text-black dark:text-white opacity-0 group-hover:opacity-100 transition-opacity mr-1",
   
   // Contact Info
   contactList: "space-y-4",
   contactItem: "flex items-start",
-  contactIconContainer: "h-10 w-10 rounded-full bg-gradient-to-br from-gray-300 to-gray-400 flex items-center justify-center flex-shrink-0 mr-3",
-  contactIcon: "h-5 w-5 text-black",
-  contactText: "text-sm text-gray-600",
+  contactIconContainer: "h-10 w-10 rounded-full bg-gradient-to-br from-gray-300 to-gray-400 dark:from-gray-600 dark:to-gray-500 flex items-center justify-center flex-shrink-0 mr-3",
+  contactIcon: "h-5 w-5 text-black dark:text-white",
+  contactText: "text-sm text-gray-600 dark:text-gray-400",
   
   // Bottom section
-  bottomSection: "py-8 flex flex-col md:flex-row justify-between items-center border-t border-gray-200 border-dashed",
-  copyright: "text-xs text-gray-500 flex items-center mb-4 md:mb-0",
+  bottomSection: "py-8 flex flex-col md:flex-row justify-between items-center border-t border-gray-200 dark:border-gray-700 border-dashed",
+  copyright: "text-xs text-gray-500 dark:text-gray-400 flex items-center mb-4 md:mb-0",
   heartIcon: "h-3 w-3 mx-1 text-amber-600 fill-current",
-  designerLink: "text-xs text-gray-500",
-  linkHover: "hover:text-blue-600 transition-colors",
+  designerLink: "text-xs text-gray-500 dark:text-gray-400",
+  linkHover: "hover:text-blue-600 dark:hover:text-blue-400 transition-colors",
   
   // Support links
-  supportLink: "text-sm text-gray-600 hover:text-black transition-colors flex items-center group",
+  supportLink: "text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors flex items-center group",
   
   // CSS for media queries (keep as object)
   mediaQueries: `
@@ -475,40 +476,40 @@ export const footerStyles = {
 
 const loginPageStyles = {
   // Page layout
-  pageContainer: "relative min-h-screen font-sans",
+  pageContainer: "relative min-h-screen font-sans bg-gray-50 dark:bg-gray-900 transition-colors duration-300",
   toastContainer: "", // Empty since ToastContainer handles its own styles
   
   // Main content
   mainContent: "relative z-10 flex justify-center items-center min-h-screen p-4",
   
   // Back button
-  backButton: "absolute top-6 cursor-pointer left-6 z-20 bg-gradient-to-r from-gray-300 to-gray-400 backdrop-blur-sm rounded-full p-2 shadow-md flex items-center justify-center transition-transform transform hover:-translate-y-0.5",
+  backButton: "absolute top-6 cursor-pointer left-6 z-20 bg-gradient-to-r from-gray-300 to-gray-400 dark:from-gray-600 dark:to-gray-500 backdrop-blur-sm rounded-full p-2 shadow-md flex items-center justify-center transition-transform transform hover:-translate-y-0.5",
   backButtonText: "ml-1",
   
   // Login card
-  loginCard: "w-full max-w-md p-8 rounded-2xl bg-white shadow-xl transform transition-all duration-300 hover:shadow-2xl relative overflow-hidden",
+  loginCard: "w-full max-w-md p-8 rounded-2xl bg-white dark:bg-gray-800 shadow-xl transform transition-all duration-300 hover:shadow-2xl relative overflow-hidden",
   
   // Decorative elements
   decorativeTopLeft: "absolute -top-10 -left-10 w-20 h-20 bg-black rounded-full opacity-50",
   decorativeBottomRight: "absolute -bottom-10 -right-10 w-24 h-24 bg-gray-400 rounded-full opacity-50",
   
   // Card content
-  cardTitle: "text-3xl font-semibold text-center text-gray-800 mb-2",
-  cardSubtitle: "text-center text-gray-500 mb-8",
+  cardTitle: "text-3xl font-semibold text-center text-gray-800 dark:text-white mb-2",
+  cardSubtitle: "text-center text-gray-500 dark:text-gray-400 mb-8",
   
   // Form
   form: "",
   
   // Form fields
   formField: "mb-5",
-  formLabel: "block text-gray-600 text-sm font-medium mb-2",
+  formLabel: "block text-gray-600 dark:text-gray-300 text-sm font-medium mb-2",
   inputContainer: "relative",
   inputIconContainer: "absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none",
   inputIcon: "h-5 w-5 text-gray-400",
   
   // Input styles
-  inputBase: "w-full pl-10 p-3 text-gray-700 border border-gray-300 rounded-xl focus:ring-2 focus:ring-gray-400 focus:border-transparent transition-all duration-200",
-  passwordInputBase: "w-full pl-10 pr-10 p-3 text-gray-700 border border-gray-300 rounded-xl focus:ring-2 focus:ring-gray-400 focus:border-transparent transition-all duration-200",
+  inputBase: "w-full pl-10 p-3 text-gray-700 dark:text-gray-200 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-gray-400 focus:border-transparent transition-all duration-200 bg-white dark:bg-gray-700",
+  passwordInputBase: "w-full pl-10 pr-10 p-3 text-gray-700 dark:text-gray-200 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-gray-400 focus:border-transparent transition-all duration-200 bg-white dark:bg-gray-700",
   
   // Password toggle
   passwordToggle: "absolute inset-y-0 right-0 pr-3 flex items-center",
@@ -518,16 +519,16 @@ const loginPageStyles = {
   checkboxContainer: "flex items-center h-5",
   checkbox: "h-4 w-4 text-teal-500 border-gray-300 rounded focus:ring-teal-400",
   checkboxLabelContainer: "ml-3 text-sm",
-  checkboxLabel: "font-medium cursor-pointer text-gray-700",
+  checkboxLabel: "font-medium cursor-pointer text-gray-700 dark:text-gray-300",
   requiredStar: "text-red-500",
   
   // Submit button
-  submitButton: "w-full py-3 px-4 cursor-pointer font-[pacifico] text-black bg-gradient-to-r from-gray-300 to-gray-400 rounded-full shadow-md text-xl focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50 transition-all duration-300 transform hover:-translate-y-1",
+  submitButton: "w-full py-3 px-4 cursor-pointer font-[pacifico] text-black dark:text-white bg-gradient-to-r from-gray-300 to-gray-400 dark:from-gray-600 dark:to-gray-500 rounded-full shadow-md text-xl focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50 transition-all duration-300 transform hover:-translate-y-1",
   
   // Sign up link
   signupContainer: "mt-4 text-center",
-  signupText: "text-sm text-gray-500",
-  signupLink: "text-sm text-black font-medium",
+  signupText: "text-sm text-gray-500 dark:text-gray-400",
+  signupLink: "text-sm text-black dark:text-white font-medium",
 };
 
 
@@ -538,55 +539,55 @@ export {  loginPageStyles };
 export const navbarStyles = {
   // Layout
   header: "sticky top-4 z-50 pb-5 flex justify-center overflow-visible",
-  nav: "bg-white shadow-lg rounded-lg xl:rounded-full sm:rounded-xl lg:rounded-full md:rounded-full px-3 sm:px-4 md:px-5 py-3 w-[92%] sm:w-[95%] md:w-[90%] max-w-5xl overflow-visible",
+  nav: "bg-white dark:bg-gray-800 shadow-lg dark:shadow-gray-900/50 rounded-lg xl:rounded-full sm:rounded-xl lg:rounded-full md:rounded-full px-3 sm:px-4 md:px-5 py-3 w-[92%] sm:w-[95%] md:w-[90%] max-w-5xl overflow-visible transition-colors duration-300",
   
   // Container
   container: "flex items-center justify-between",
   
   // Brand/Logo
   brandContainer: "flex items-center",
-  logoContainer: "flex items-center justify-center rounded-full bg-gray-100 p-2 mr-3",
-  logoIcon: "h-6 w-6 text-gray-800",
+  logoContainer: "flex items-center justify-center rounded-full bg-gray-100 dark:bg-gray-700 p-2 mr-3",
+  logoIcon: "h-6 w-6 text-gray-800 dark:text-gray-200",
   logoLink: "flex items-baseline gap-2 select-none",
-  logoText: "text-base sm:text-lg md:text-xl font-light tracking-wide",
+  logoText: "text-base sm:text-lg md:text-xl font-light tracking-wide dark:text-white",
   
   // Desktop Navigation
   desktopNav: "hidden md:flex items-center space-x-2",
   navItemBase: "relative flex items-center gap-1 px-4 py-2 text-sm transition-colors duration-200",
-  navItemActive: "text-gray-900 font-semibold",
-  navItemInactive: "text-gray-700 hover:text-gray-900",
+  navItemActive: "text-gray-900 dark:text-white font-semibold",
+  navItemInactive: "text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white",
   activeIndicator: "absolute left-0 -bottom-1 w-full h-0.5 rounded-full transition-opacity duration-200",
   activeIndicatorVisible: "opacity-100 bg-gradient-to-r from-gray-600 to-gray-400",
   activeIndicatorHidden: "opacity-0",
   
   // Right Actions
   rightActions: "flex items-center gap-6",
-  cartLink: "text-gray-500 hover:text-gray-700 transition-colors relative",
+  cartLink: "text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors relative",
   cartIcon: "h-5 w-5",
   cartBadge: "absolute top-0 right-0 -translate-x-1/2 sm:-top-4 sm:-right-4 sm:translate-x-0 inline-flex items-center justify-center px-1.5 py-1 text-xs rounded-full bg-gray-500 text-white font-medium",
   
   // Account Links
-  accountLink: "hidden md:flex items-center cursor-pointer text-gray-500 hover:text-gray-700 transition-colors",
+  accountLink: "hidden md:flex items-center cursor-pointer text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors",
   accountIcon: "h-5 w-5 mr-1",
   accountText: "text-sm",
   
   // Mobile Menu
   mobileMenuButton: "md:hidden",
-  menuButton: "text-gray-500 hover:text-gray-700",
+  menuButton: "text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200",
   menuIcon: "h-6 w-6",
   
   // Mobile Menu Content
-  mobileMenu: "md:hidden mt-4 pb-4 border-t border-gray-200 pt-4",
+  mobileMenu: "md:hidden mt-4 pb-4 border-t border-gray-200 dark:border-gray-700 pt-4",
   mobileMenuContainer: "flex flex-col space-y-2",
   mobileNavItemBase: "flex xl:items-center justify-center lg:items-center md:items-center px-4 py-2 text-sm rounded-lg transition-colors",
-  mobileNavItemActive: "bg-gray-200 text-gray-900 font-semibold",
-  mobileNavItemInactive: "text-gray-700 hover:bg-gray-50",
+  mobileNavItemActive: "bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-white font-semibold",
+  mobileNavItemInactive: "text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800",
   mobileNavItemText: "font-medium",
   
   // Mobile Account Section
   mobileAccountContainer: "px-4 pt-2",
-  mobileAccountLink: "flex xl:items-center justify-center lg:items-center md:items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-700 hover:bg-gray-50",
-  mobileAccountButton: "w-full flex xl:items-center justify-center lg:items-center md:items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-700 hover:bg-gray-50",
+  mobileAccountLink: "flex xl:items-center justify-center lg:items-center md:items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800",
+  mobileAccountButton: "w-full flex xl:items-center justify-center lg:items-center md:items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800",
   mobileAccountIcon: "h-4 w-4",
   
   // Inline styles
@@ -594,42 +595,46 @@ export const navbarStyles = {
     fontFamily: "'Playfair Display', serif",
     color: "#0a0a0a"
   },
+  logoTextStyleDark: {
+    fontFamily: "'Playfair Display', serif",
+    color: "#ffffff"
+  },
   playfairFont: { fontFamily: "'Playfair Display', serif" }
 };
 
 // Add to existing dummyStyles.js
 export const signUpStyles = {
   // Main container
-  pageContainer: "min-h-screen bg-gradient-to-b from-white to-gray-50 flex pt-20 items-center justify-center p-6",
+  pageContainer: "min-h-screen bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800 flex pt-20 items-center justify-center p-6 transition-colors duration-300",
   pageFontStyle: { fontFamily: "'Poppins', sans-serif" },
   
   // Back button
-  backButton: "absolute top-6 left-6 cursor-pointer z-30 bg-gradient-to-br from-gray-200 to-gray-400 backdrop-blur-sm rounded-full p-2 shadow-sm flex items-center justify-center transition-transform transform",
-  backIcon: "h-5 w-5 text-gray-700",
+  backButton: "absolute top-6 left-6 cursor-pointer z-30 bg-gradient-to-br from-gray-200 to-gray-400 dark:from-gray-700 dark:to-gray-600 backdrop-blur-sm rounded-full p-2 shadow-sm flex items-center justify-center transition-transform transform",
+  backIcon: "h-5 w-5 text-gray-700 dark:text-gray-200",
   backText: "ml-1 font-[pacifico]",
   
   // Form container
   formContainer: "w-full max-w-md",
-  card: "bg-white/95 backdrop-blur-sm rounded-2xl shadow-lg px-8 py-10 relative overflow-hidden",
+  card: "bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm rounded-2xl shadow-lg px-8 py-10 relative overflow-hidden",
   
   // Decorative elements
   decorativeCircle: "absolute -top-10 -right-10 w-28 h-28 bg-gradient-to-br from-gray-300 to-gray-500 rounded-full opacity-80 filter blur-sm",
   
   // Headings
-  title: "text-2xl font-semibold text-gray-800 text-center mb-2",
+  title: "text-2xl font-semibold text-gray-800 dark:text-white text-center mb-2",
   titleFontStyle: { fontFamily: "'Playfair Display', serif" },
-  subtitle: "text-center text-sm text-gray-500 font-[pacifico] mb-6",
+  subtitle: "text-center text-sm text-gray-500 dark:text-gray-400 font-[pacifico] mb-6",
   
   // Form
   form: "space-y-4",
-  label: "text-sm text-gray-600 block",
+  label: "text-sm text-gray-600 dark:text-gray-300 block",
   
   // Input fields
   inputContainer: "relative",
   inputIconContainer: "absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none",
   inputIcon: "h-5 w-5 text-gray-400",
-  inputField: "w-full pl-10 p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-gray-400 focus:border-transparent transition",
-  passwordInputField: "w-full pl-10 pr-10 p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-gray-400 focus:border-transparent transition",
+  inputField: "w-full pl-10 p-3 border border-gray-200 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-gray-400 focus:border-transparent transition bg-white dark:bg-gray-700 text-gray-900 dark:text-white",
+  passwordInputField: "w-full pl-10 pr-10 p-3 border border-gray-200 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-gray-400 focus:border-transparent transition bg-white dark:bg-gray-700 text-gray-900 dark:text-white",
   
   // Password toggle
   passwordToggleButton: "absolute inset-y-0 right-0 cursor-pointer pr-3 flex items-center",
@@ -639,32 +644,32 @@ export const signUpStyles = {
   checkboxContainer: "flex items-center justify-between",
   checkboxLabel: "flex cursor-pointer items-center text-sm select-none",
   checkboxInput: "h-4 w-4 text-teal-500 border-gray-300 rounded focus:ring-gray-400",
-  checkboxText: "ml-2 text-gray-700",
+  checkboxText: "ml-2 text-gray-700 dark:text-gray-300",
   
   // Submit button
-  submitButton: "w-full py-3 rounded-full font-[pacifico] cursor-pointer bg-gradient-to-r from-gray-300 to-gray-400 text-gray-900 font-medium shadow-md text-xl hover:-translate-y-0.5 transition-transform",
+  submitButton: "w-full py-3 rounded-full font-[pacifico] cursor-pointer bg-gradient-to-r from-gray-300 to-gray-400 dark:from-gray-600 dark:to-gray-500 text-gray-900 dark:text-white font-medium shadow-md text-xl hover:-translate-y-0.5 transition-transform",
   
   // Bottom link
   bottomContainer: "mt-4 text-center",
-  bottomText: "text-sm text-gray-500",
-  loginLink: "text-sm text-black font-medium"
+  bottomText: "text-sm text-gray-500 dark:text-gray-400",
+  loginLink: "text-sm text-black dark:text-white font-medium"
 };
 
 // Add to existing src/assets/dummyStyles.js
 
 const testimonialPageStyles = {
   // Page layout
-  pageSection: "py-12 bg-white",
+  pageSection: "py-12 bg-white dark:bg-gray-900 transition-colors duration-300",
   container: "container mx-auto px-6",
   
   // Title
-  title: "text-3xl md:text-4xl text-center font-extralight text-gray-900 tracking-wide mb-10",
+  title: "text-3xl md:text-4xl text-center font-extralight text-gray-900 dark:text-white tracking-wide mb-10",
   
   // Horizontal scroller
   scroller: "flex gap-8 overflow-x-auto xl:overflow-x-container pb-6 px-2 md:px-6  snap-x snap-mandatory cursor-grab",
   
   // Card styles
-  card: "snap-center flex-shrink-2 min-w-[92%] md:min-w-[48%] lg:min-w-[49%] bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden flex flex-col lg:flex-row",
+  card: "snap-center flex-shrink-2 min-w-[92%] md:min-w-[48%] lg:min-w-[49%] bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 overflow-hidden flex flex-col lg:flex-row transition-colors duration-300",
   
   // Image block
   imageBlock: "w-full lg:w-5/12 min-h-[220px] md:min-h-[300px] overflow-hidden relative rounded-t-2xl lg:rounded-l-2xl",
@@ -672,9 +677,9 @@ const testimonialPageStyles = {
   
   // Content block
   contentBlock: "w-full lg:w-7/12 p-8 flex flex-col justify-between",
-  cardTitle: "text-lg md:text-xl font-bold tracking-tight text-gray-900 mb-3",
+  cardTitle: "text-lg md:text-xl font-bold tracking-tight text-gray-900 dark:text-white mb-3",
   cardMeta: "text-sm text-gray-400 mb-6",
-  cardExcerpt: "text-gray-600 leading-relaxed",
+  cardExcerpt: "text-gray-600 dark:text-gray-300 leading-relaxed",
   
   // Scrollbar hiding
   scrollbarHide: " .container ::-webkit-scrollbar { display: none; }   .container { -ms-overflow-style: none; scrollbar-width: none; }",
@@ -687,13 +692,13 @@ export {  testimonialPageStyles };
 
 export const watchPageStyles = {
   // Layout
-  container: "px-6 sm:px-8 md:px-12 lg:px-24 py-12 bg-white min-h-screen",
+  container: "px-6 sm:px-8 md:px-12 lg:px-24 py-12 bg-white dark:bg-gray-900 min-h-screen transition-colors duration-300",
   
   // Header Section
   headerContainer: "flex flex-col md:flex-row items-start md:items-center justify-between mb-8 md:mb-10 gap-6 md:gap-0",
-  headerTitle: "text-3xl sm:text-4xl md:text-5xl font-[pacifico] font-extrabold tracking-widest text-gray-500",
+  headerTitle: "text-3xl sm:text-4xl md:text-5xl font-[pacifico] font-extrabold tracking-widest text-gray-500 dark:text-gray-300",
   titleAccent: "text-transparent bg-clip-text bg-gradient-to-r from-gray-600 to-cyan-500",
-  headerDescription: "mt-3 text-sm text-gray-500 max-w-xl",
+  headerDescription: "mt-3 text-sm text-gray-500 dark:text-gray-400 max-w-xl",
   
   // Filter Buttons
   filterContainer: "flex flex-wrap items-center gap-3",
@@ -712,15 +717,15 @@ export const watchPageStyles = {
   
   // Cart Controls
   cartControlsContainer: "absolute left-1/2 -translate-x-1/2 bottom-2",
-  cartQuantityControls: "inline-flex items-center gap-2 bg-white px-3 py-2 rounded-full shadow",
-  cartButton: "p-2 rounded cursor-pointer",
-  cartQuantity: "px-3 py-1 min-w-[36px] text-center font-medium",
-  addToCartButton: "flex items-center cursor-pointer gap-2 px-4 py-2 rounded-full text-sm font-semibold bg-white shadow hover:bg-gradient-to-br from-gray-200 to-gray-400",
-  addToCartIcon: "w-4 h-4",
+  cartQuantityControls: "inline-flex items-center gap-2 bg-white dark:bg-gray-700 px-3 py-2 rounded-full shadow",
+  cartButton: "p-2 rounded cursor-pointer text-gray-800 dark:text-white",
+  cartQuantity: "px-3 py-1 min-w-[36px] text-center font-medium text-gray-800 dark:text-white",
+  addToCartButton: "flex items-center cursor-pointer gap-2 px-4 py-2 rounded-full text-sm font-semibold bg-white dark:bg-gray-700 shadow hover:bg-gradient-to-br from-gray-200 to-gray-400 dark:from-gray-600 dark:to-gray-500 text-gray-800 dark:text-white",
+  addToCartIcon: "w-4 h-4 text-gray-800 dark:text-white",
   
   // Product Info
   productInfo: "mt-4",
-  productName: "text-sm font-semibold uppercase",
-  productDescription: "text-xs text-gray-500",
-  productPrice: "mt-2 text-sm font-medium"
+  productName: "text-sm font-semibold uppercase text-gray-800 dark:text-white",
+  productDescription: "text-xs text-gray-500 dark:text-gray-400",
+  productPrice: "mt-2 text-sm font-medium text-gray-600 dark:text-gray-300"
 };

@@ -112,7 +112,7 @@ const Footer = () => {
                             <div className={footerStyles.brandIconPing}></div>
                             <Clock className={footerStyles.brandIcon}/>
                         </div>
-                        <span className={footerStyles.brandName}>ChronoElite</span>
+                        <span className={footerStyles.brandName}>UrbanTime</span>
                     </div>
                     <p className={footerStyles.brandDescription}>
                         Crafting timeless pieces for the discerning individual. Where precision meets elegance in every detail.  
@@ -203,7 +203,7 @@ const Footer = () => {
                             <Mail className={footerStyles.contactIcon} />
                             </div>
                             <span className={footerStyles.contactText}>
-                            info@chronoelite.com
+                            info@urbantime.com
                             </span>
                         </li>
                     </ul>
@@ -213,7 +213,7 @@ const Footer = () => {
             {/* BOTTOM LINES */}
             <div className={footerStyles.bottomSection}>
                 <p className={footerStyles.copyright}>
-                    &copy; {new Date().getFullYear()} ChronoElite. Crafted with{" "}
+                    &copy; {new Date().getFullYear()} UrbanTime. Crafted with{" "}
                     <Heart className={footerStyles.heartIcon} /> in India    
                 </p>
                 

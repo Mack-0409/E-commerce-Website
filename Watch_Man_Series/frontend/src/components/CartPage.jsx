@@ -66,7 +66,7 @@ const CartPage = () => {
           <div className={cartPageStyles.backButtonContainer}>
             <Link to="/watches" className={cartPageStyles.backLink}>
               <div className={cartPageStyles.backIconContainer}>
-                <ArrowLeft className="w-5 h-5 text-gray-700" />
+                <ArrowLeft className="w-5 h-5 text-gray-700 dark:text-gray-200" />
               </div>
               <span className={cartPageStyles.backText}>Continue Shopping</span>
             </Link>
@@ -79,17 +79,17 @@ const CartPage = () => {
         </div>
 
         <div className="flex items-center justify-between mb-6">
-          <p className="text-gray-600">{totalItems} {totalItems === 1 ? 'item' : 'items'} in your cart</p>
+          <p className="text-gray-600 dark:text-gray-400">{totalItems} {totalItems === 1 ? 'item' : 'items'} in your cart</p>
           <div className="flex items-center gap-2">
             <button
               onClick={() => setViewMode('grid')}
-              className={`p-2 rounded-lg transition ${viewMode === 'grid' ? 'bg-gray-700 text-white' : 'bg-gray-100 text-gray-600'}`}
+              className={`p-2 rounded-lg transition ${viewMode === 'grid' ? 'bg-gray-700 text-white' : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300'}`}
             >
               <Grid className="w-5 h-5" />
             </button>
             <button
               onClick={() => setViewMode('list')}
-              className={`p-2 rounded-lg transition ${viewMode === 'list' ? 'bg-gray-700 text-white' : 'bg-gray-100 text-gray-600'}`}
+              className={`p-2 rounded-lg transition ${viewMode === 'list' ? 'bg-gray-700 text-white' : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300'}`}
             >
               <List className="w-5 h-5" />
             </button>
@@ -144,15 +144,15 @@ const CartPage = () => {
             ) : (
               <div className="space-y-4">
                 {cart.map((item) => (
-                  <div key={item.id} className="bg-white rounded-xl shadow-md p-3 sm:p-4 flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4">
+                  <div key={item.id} className="bg-white dark:bg-gray-800 rounded-xl shadow-md p-3 sm:p-4 flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4 transition-colors">
                     <img 
                       src={item.image || 'https://via.placeholder.com/100'} 
                       alt={item.name}
                       className="w-20 h-20 sm:w-24 sm:h-24 object-contain rounded-lg"
                     />
                     <div className="flex-1 w-full">
-                      <h3 className="font-semibold text-gray-800 text-sm sm:text-base">{item.name}</h3>
-                      <p className="text-gray-600 text-sm">{item.price?.toLocaleString('en-IN') || '0'}</p>
+                      <h3 className="font-semibold text-gray-800 dark:text-white text-sm sm:text-base">{item.name}</h3>
+                      <p className="text-gray-600 dark:text-gray-400 text-sm">{item.price?.toLocaleString('en-IN') || '0'}</p>
                     </div>
                     <div className="flex flex-row sm:flex-col items-center gap-2 sm:gap-0 w-full sm:w-auto">
                       <div className="flex items-center gap-2 sm:mb-2">
@@ -170,7 +170,7 @@ const CartPage = () => {
                         </button>
                       </div>
                       <div className="text-right sm:text-center">
-                        <p className="font-semibold text-gray-800 text-sm sm:text-base">
+                        <p className="font-semibold text-gray-800 dark:text-white text-sm sm:text-base">
                           ₹ {parseInt((item.price.replaceAll("₹","")?.replaceAll(",","")) * item.qty)?.toLocaleString('en-IN') || '0'}
                         </p>
                       </div>
@@ -180,13 +180,13 @@ const CartPage = () => {
               </div>
             )}
 
-            <div className="bg-white rounded-xl shadow-md p-6 mt-6">
+            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 mt-6 transition-colors">
               <h2 className={cartPageStyles.formTitle}>Checkout Information</h2>
               <p className={cartPageStyles.formSubtitle}>Fill in your details to place your order</p>
               
               <form onSubmit={handleSubmit} className={cartPageStyles.form}>
                 <div className="mb-6">
-                  <h3 className="text-lg font-semibold text-gray-800 mb-3">Contact Details</h3>
+                  <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-3">Contact Details</h3>
                   <div className={cartPageStyles.inputGrid}>
                     <input
                       type="text"
@@ -228,7 +228,7 @@ const CartPage = () => {
                 </div>
 
                 <div className="mb-6">
-                  <h3 className="text-lg font-semibold text-gray-800 mb-3">Shipping Address</h3>
+                  <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-3">Shipping Address</h3>
                   <div className={cartPageStyles.inputGrid}>
                     <input
                       type="text"
@@ -277,12 +277,12 @@ const CartPage = () => {
                       onChange={(e) => setSameAsShipping(e.target.checked)}
                       className="w-4 h-4 rounded border-gray-300"
                     />
-                    <span className="text-gray-700">Billing address same as shipping</span>
+                    <span className="text-gray-700 dark:text-gray-300">Billing address same as shipping</span>
                   </label>
 
                   {!sameAsShipping && (
                     <div>
-                      <h3 className="text-lg font-semibold text-gray-800 mb-3">Billing Address</h3>
+                      <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-3">Billing Address</h3>
                       <div className={cartPageStyles.inputGrid}>
                         <input
                           type="text"
@@ -360,7 +360,7 @@ const CartPage = () => {
                 <span>₹ {grandTotal.toLocaleString('en-IN')}</span>
               </div>
             </div>
-            <p className="text-xs text-gray-500 text-center">
+            <p className="text-xs text-gray-500 dark:text-gray-400 text-center">
               {shippingCost === 0 ? 'Free shipping on orders above ₹1000!' : 'Add ₹' + (1000 - totalPrice).toLocaleString('en-IN') + ' more for free shipping'}
             </p>
           </div>

@@ -88,6 +88,9 @@ import { Calendar, ChevronDown, CreditCard, MessageSquare, Phone, Search, Trash2
         }
     }
 
+    // eslint-disable-next-line no-unused-vars
+    const prev = bookings;
+
     // to update the status of the order
     async function updateStatus(id, newStatus) {
         const current = bookings.find((b) => b.id === id);
@@ -96,7 +99,6 @@ import { Calendar, ChevronDown, CreditCard, MessageSquare, Phone, Search, Trash2
         return;
         }
 
-        const prev = bookings;
         setBookings((p) =>
         p.map((b) => (b.id === id ? { ...b, status: newStatus } : b))
         );

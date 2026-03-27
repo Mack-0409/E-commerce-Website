@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import  { navbarStyles } from "../assets/dummyStyles";
-import { BaggageClaim, Clock, Menu, User, X } from 'lucide-react';
+import { BaggageClaim, Clock, Menu, User, X, Moon, Sun } from 'lucide-react';
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useCart } from "../CartContext";
+import { useTheme } from "../ThemeContext";
 
 const navItems = [
     { name: "Home", href: "/" },
@@ -15,6 +16,7 @@ const Navbar = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const [active, setActive] = useState(location.pathname || "/");
+    const { isDarkMode, toggleTheme } = useTheme();
 
     const {totalItems} = useCart();
     const [loggedIn, setLoggedIn] = useState(() => {
@@ -118,6 +120,19 @@ const Navbar = () => {
 
                     {/* Right side */}
                     <div className={navbarStyles.rightActions}>
+                        {/* Theme Toggle */}
+                        <button
+                            onClick={toggleTheme}
+                            className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                            aria-label="Toggle theme"
+                        >
+                            {isDarkMode ? (
+                                <Sun className="h-5 w-5 text-yellow-500" />
+                            ) : (
+                                <Moon className="h-5 w-5 text-gray-600" />
+                            )}
+                        </button>
+
                         <Link to="/cart" className={navbarStyles.cartLink}>
                             <BaggageClaim className={navbarStyles.cartIcon} />
                             {totalItems > 0 && (
@@ -178,6 +193,21 @@ const Navbar = () => {
                                     </Link>
                                 );
                             })}
+
+                            {/* Mobile Theme Toggle */}
+                            <button
+                                onClick={() => {
+                                    toggleTheme();
+                                    setOpen(false);
+                                }}
+                                className={`${navbarStyles.mobileNavItemBase} ${
+                                    navbarStyles.mobileNavItemInactive
+                                }`}
+                            >
+                                <span className={navbarStyles.mobileNavItemText}>
+                                    {isDarkMode ? 'Light Mode' : 'Dark Mode'}
+                                </span>
+                            </button>
 
                             <div className={navbarStyles.mobileAccountContainer}>
                                 {!loggedIn ? (

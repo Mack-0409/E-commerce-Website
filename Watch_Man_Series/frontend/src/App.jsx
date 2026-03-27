@@ -8,6 +8,7 @@ import Watch from "./pages/Watch";
 import Contact from "./pages/Contact";
 import { ArrowUp } from "lucide-react";
 import Cart from "./pages/Cart";
+import Chatbot from "./components/Chatbot";
 
 // To scroll to top for each page
 
@@ -82,7 +83,7 @@ const App =  () => {
 
 
   return (
-    <div className=" min-h-screen w-full overflow-x-hidden antialiased bg-white text-slate-900">
+    <div className="min-h-screen w-full overflow-x-hidden antialiased bg-white dark:bg-gray-900 text-slate-900 dark:text-gray-100 transition-colors duration-300">
       <ScrollToTopOnRouteChange />
 
       <Routes>
@@ -101,7 +102,7 @@ const App =  () => {
         <button
           onClick={scrollToTop}
           aria-label="Scroll to top"
-          className={`fixed right-6 bottom-6 z-50 flex items-center justify-center p-3 rounded-full shadow-lg transition-all duration-300
+          className={`fixed right-6 bottom-24 z-50 flex items-center justify-center p-3 rounded-full shadow-lg transition-all duration-300
             ${
               showButton
                 ? "opacity-100 translate-y-0 pointer-events-auto"
@@ -111,6 +112,8 @@ const App =  () => {
         >
           <ArrowUp size={18} />
         </button>
+
+        <Chatbot />
     </div>
   );
 };
