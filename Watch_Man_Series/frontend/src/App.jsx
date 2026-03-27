@@ -6,6 +6,10 @@ import LoginPage from "./components/LoginPage";
 import SignUpPage from "./components/SignUpPage";
 import Watch from "./pages/Watch";
 import Contact from "./pages/Contact";
+import ShippingReturns from "./pages/ShippingReturns";
+import ProductCare from "./pages/ProductCare";
+import Warranty from "./pages/Warranty";
+import FAQ from "./pages/FAQ";
 import { ArrowUp } from "lucide-react";
 import Cart from "./pages/Cart";
 import Chatbot from "./components/Chatbot";
@@ -93,6 +97,10 @@ const App =  () => {
         <Route path="/signup" element={<SignUpPage/>} />
         <Route path="/watches" element={<Watch/>} />
         <Route path="/contact" element={<Contact/>} />
+        <Route path="/shipping-returns" element={<ShippingReturns/>} />
+        <Route path="/product-care" element={<ProductCare/>} />
+        <Route path="/warranty" element={<Warranty/>} />
+        <Route path="/faq" element={<FAQ/>} />
         <Route path="/cart" element={<ProtectedRoute>
           <Cart/>
         </ProtectedRoute>}/>

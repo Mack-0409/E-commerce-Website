@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { footerStyles } from '../assets/dummyStyles'; 
 import { 
+    Check,
     ChevronRight, 
     Clock, 
     Facebook,
@@ -13,6 +15,24 @@ import {
 } from 'lucide-react';
 
 const Footer = () => {
+  const [email, setEmail] = useState('');
+  const [toast, setToast] = useState(null);
+
+  const handleSubscribe = () => {
+    if (!email.trim()) {
+      setToast({ text: 'Please enter your email address', type: 'error' });
+      setTimeout(() => setToast(null), 2500);
+      return;
+    }
+    if (!/^\S+@\S+\.\S+$/.test(email)) {
+      setToast({ text: 'Please enter a valid email address', type: 'error' });
+      setTimeout(() => setToast(null), 2500);
+      return;
+    }
+    setToast({ text: 'Subscribed successfully!', type: 'success' });
+    setEmail('');
+    setTimeout(() => setToast(null), 3000);
+  };
   return (
     <footer className={footerStyles.footer}>
         <div className={footerStyles.topBorder}></div>
@@ -94,10 +114,13 @@ const Footer = () => {
                     <div className={footerStyles.formContainer}>
                         <input 
                             type="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            onKeyDown={(e) => e.key === 'Enter' && handleSubscribe()}
                             placeholder="Enter your e-mail"
                             className={footerStyles.emailInput}
                         />
-                        <button className={footerStyles.subscribeButton}>
+                        <button onClick={handleSubscribe} className={footerStyles.subscribeButton}>
                             Subscribe
                         </button>
                     </div>
@@ -159,17 +182,17 @@ const Footer = () => {
                     </h3>
                     <ul className={footerStyles.linksList}>
                         {[
-                            "Contact Us",
-                            "Shipping & Returns",
-                            "Product Care",
-                            "Warranty",
-                            "FAQ",
+                            { label: "Contact Us", href: "/contact" },
+                            { label: "Shipping & Returns", href: "/shipping-returns" },
+                            { label: "Product Care", href: "/product-care" },
+                            { label: "Warranty", href: "/warranty" },
+                            { label: "FAQ", href: "/faq" },
                         ].map((item) => (
-                            <li key={item}>
-                                <a href="#" className={footerStyles.supportLink}>
+                            <li key={item.label}>
+                                <Link to={item.href} className={footerStyles.supportLink}>
                                     <ChevronRight className={footerStyles.linkIcon} />
-                                    {item}
-                                </a>
+                                    {item.label}
+                                </Link>
                             </li>
                         ))}
                     </ul>
@@ -187,7 +210,7 @@ const Footer = () => {
                             <MapPin className={footerStyles.contactIcon} />
                             </div>
                             <span className={footerStyles.contactText}>
-                            123 Luxury Avenue, Geneva, Switzerland
+                            123 Luxury Avenue, Geneva, India
                             </span>
                         </li>
                         <li className={footerStyles.contactItem}>
@@ -195,7 +218,7 @@ const Footer = () => {
                             <Phone className={footerStyles.contactIcon} />
                             </div>
                             <span className={footerStyles.contactText}>
-                            +41 22 345 6789
+                            +91 8828780409
                             </span>
                         </li>
                         <li className={footerStyles.contactItem}>
@@ -203,7 +226,7 @@ const Footer = () => {
                             <Mail className={footerStyles.contactIcon} />
                             </div>
                             <span className={footerStyles.contactText}>
-                            info@urbantime.com
+                            urbantime.store@gmail.com
                             </span>
                         </li>
                     </ul>
@@ -225,13 +248,25 @@ const Footer = () => {
                             target="_blank" 
                             rel="noopener  noreferre" 
                             className={footerStyles.linkHover}>
-                            Hexagon Digital Services    
+                            Mayank Singh    
                         </a>
                     </p>
                 </div>
             </div>
         </div>
         <style>{footerStyles.mediaQueries}</style>
+
+        {/* Toast Notification */}
+        {toast && (
+            <div className={`fixed top-6 right-6 z-50 flex items-center gap-2 px-5 py-3 rounded-xl shadow-lg text-sm font-medium transition-all duration-300 ${
+                toast.type === 'success'
+                    ? 'bg-green-500 text-white'
+                    : 'bg-red-500 text-white'
+            }`}>
+                <Check className="w-4 h-4" />
+                <span>{toast.text}</span>
+            </div>
+        )}
     </footer>
   );
 };

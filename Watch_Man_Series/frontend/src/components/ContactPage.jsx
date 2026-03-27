@@ -187,7 +187,7 @@ const ContactPage = () => {
         return e;
     }
 
-    // to submit and redirect to whatsapp
+    // to submit and redirect to whatsapp or email
 
     function handleSubmit(ev) {
         ev.preventDefault();
@@ -199,6 +199,26 @@ const ContactPage = () => {
     }
 
     setSending(true);
+
+    if (form.contactMethod === "Email") {
+        const subject = encodeURIComponent(`Inquiry: ${form.product}`);
+        const body = encodeURIComponent(
+          `Hello UrbanTime,\n\n` +
+          `Name: ${form.name}\n` +
+          `Email: ${form.email}\n` +
+          `Phone: ${form.phone}\n` +
+          `Product Interest: ${form.product}\n` +
+          `Budget: ${form.budget}\n\n` +
+          `Message:\n${form.message}`
+        );
+        const mailtoUrl = `mailto:urbantime.store@gmail.com?subject=${subject}&body=${body}`;
+
+        window.open(mailtoUrl, '_self');
+        showToast("Email client opened", "success", 2000);
+        clearForm();
+        setSending(false);
+        return;
+    }
 
     // Build WhatsApp message (formatted)
     const message =
@@ -296,7 +316,7 @@ const ContactPage = () => {
                                         name="contactMethod"
                                         value={form.contactMethod}
                                         onChange={handleChange}
-                                        options={["whatsApp", "Phone Call", "Email"]}
+                                        options={["WhatsApp", "Email"]}
                                         error={errors.contactMethod}
                                         required
                                     />
@@ -354,7 +374,7 @@ const ContactPage = () => {
                                         className={contactPageStyles.submitButton}
                                     >
                                         <Send className=" w-4 h-4" />
-                                        <span className="font-medium">Send via WhatsApp</span>
+                                        <span className="font-medium">{form.contactMethod === "Email" ? "Send via Email" : "Send via WhatsApp"}</span>
                                     </button>
 
                                     <button type="button" onClick={() => {

@@ -239,10 +239,10 @@ export const comingSoonStyles = {
   // Header
   headerContainer: "flex items-center justify-between mb-8",
   titleContainer: "",
-  title: "text-2xl md:text-3xl tracking-wide uppercase text-white dark:text-white",
+  title: "text-2xl md:text-3xl tracking-wide uppercase text-gray-900 dark:text-white",
   titleStyle: { fontFamily: "'Playfair Display', serif" },
-  subtitle: "text-sm text-gray-300 dark:text-gray-400 mt-1 uppercase tracking-wider",
-  viewAllLink: "text-sm text-white dark:text-gray-300 hover:text-gray-900 dark:hover:text-white uppercase tracking-wide",
+  subtitle: "text-sm text-gray-500 dark:text-gray-400 mt-1 uppercase tracking-wider",
+  viewAllLink: "text-sm text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white uppercase tracking-wide",
   
   // Watches Container
   watchesContainer: "w-full overflow-x-auto",
@@ -255,8 +255,8 @@ export const comingSoonStyles = {
   
   // Figcaption
   figcaption: "mt-6 text-center",
-  watchName: "text-xs md:text-sm uppercase tracking-widest text-white dark:text-white font-semibold",
-  price: "mt-3 text-sm text-gray-200 dark:text-gray-300",
+  watchName: "text-xs md:text-sm uppercase tracking-widest text-gray-800 dark:text-white font-semibold",
+  price: "mt-3 text-sm text-gray-600 dark:text-gray-300",
   
   // Function for formatting (keep as helper)
   formatINR: (n) => `₹ ${n.toLocaleString("en-IN")}`
