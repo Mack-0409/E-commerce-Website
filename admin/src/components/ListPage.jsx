@@ -128,7 +128,7 @@ const ListPage = () => {
                                 </div>
 
                                 <div className="flex items-center justify-between mt-3">
-                                    <div className={listPageStyles.price}>${watch.price}</div>
+                                    <div className={listPageStyles.price}>₹{watch.price}</div>
                                     <button 
                                         onClick={() => handleDelete(watch.id)}
                                         className={listPageStyles.deleteButton}

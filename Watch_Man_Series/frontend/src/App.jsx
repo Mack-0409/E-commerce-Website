@@ -13,6 +13,7 @@ import FAQ from "./pages/FAQ";
 import { ArrowUp } from "lucide-react";
 import Cart from "./pages/Cart";
 import Chatbot from "./components/Chatbot";
+import Payment from "./pages/Payment";
 
 // To scroll to top for each page
 
@@ -103,6 +104,9 @@ const App =  () => {
         <Route path="/faq" element={<FAQ/>} />
         <Route path="/cart" element={<ProtectedRoute>
           <Cart/>
+        </ProtectedRoute>}/>
+        <Route path="/payment" element={<ProtectedRoute>
+          <Payment/>
         </ProtectedRoute>}/>
       </Routes>    
 

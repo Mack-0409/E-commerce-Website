@@ -1,5 +1,6 @@
 import mongoose from "mongoose"
-
+import dns from "dns";
+dns.setServers(["1.1.1.1","8.8.8.8"])
 export const connectDB = async () => {
-    await mongoose.connect("mongodb+srv://mayanksingh0409_db_user:Mack1813302E@urbantime.9ar7b88.mongodb.net/UrbanTime").then(() => console.log('DB CONNECTED'))
+    await mongoose.connect("mongodb+srv://user200:test300@urbantime.9ar7b88.mongodb.net/UrbanTime").then(() => console.log('DB CONNECTED'))
 }

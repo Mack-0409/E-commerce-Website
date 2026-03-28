@@ -3,6 +3,9 @@ import cartPageStyles from '../assets/dummyStyles';
 import { useCart } from '../CartContext';
 import { Link, useNavigate } from 'react-router-dom';
 import { Trash2, Minus, Plus, ShoppingBag, ArrowLeft, List, Grid, CreditCard } from 'lucide-react';
+import axios from 'axios';
+
+const API_BASE = "http://localhost:4000/api";
 
 const CartPage = () => {
   const { cart, increment, decrement, removeItem, clearCart, totalPrice, totalItems } = useCart();
@@ -33,12 +36,46 @@ const CartPage = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Order submitted:', { cart, formData, total: grandTotal });
-    alert('Order placed successfully! (Demo)');
-    clearCart();
-    navigate('/');
+    setLoading(true);
+    
+    const address = `${formData.shippingAddress}, ${formData.shippingCity}, ${formData.shippingState} - ${formData.shippingPincode}`;
+    
+    const orderData = {
+      name: `${formData.firstName} ${formData.lastName}`,
+      email: formData.email,
+      phoneNumber: formData.phone,
+      address: address,
+      items: cart.map(item => ({
+        productId: item.id,
+        name: item.name,
+        img: item.image,
+        price: Number(item.price.replace(/[₹,]/g, '')),
+        qty: item.qty,
+        description: item.description || ''
+      })),
+      paymentMethod: 'Online'
+    };
+
+    try {
+      const token = localStorage.getItem('authToken');
+      const res = await axios.post(`${API_BASE}/orders`, orderData, {
+        headers: token ? { Authorization: `Bearer ${token}` } : {}
+      });
+      
+      if (res.data.success) {
+        localStorage.setItem('currentOrderId', res.data.order._id);
+        navigate('/payment');
+      }
+    } catch (err) {
+      console.error('Order creation failed:', err);
+      alert('Failed to create order. Please try again.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   if (cart.length === 0) {
@@ -326,9 +363,9 @@ const CartPage = () => {
                 </div>
 
                 <div className={cartPageStyles.formButtonsContainer}>
-                  <button type="submit" className={cartPageStyles.submitButton}>
+                  <button type="submit" className={cartPageStyles.submitButton} disabled={loading}>
                     <CreditCard className="w-5 h-5 mr-2" />
-                    Place Order
+                    {loading ? 'Processing...' : 'Place Order'}
                   </button>
                   <Link to="/watches" className={cartPageStyles.continueShoppingButton}>
                     Continue Shopping
