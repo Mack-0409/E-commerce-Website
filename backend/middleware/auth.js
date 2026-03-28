@@ -3,7 +3,7 @@ import User from '../models/userModel.js';
 
 const JWT_SECRET = 'your_jwt_secret_here';
 
-export default async function authMiddleware(req, res) {
+export async function verifyToken(req, res, next) {
     const authHeader = req.headers.authorization;
     if (!authHeader || !authHeader.startsWith('Bearer ')) {
         return res.status(401).json({
@@ -14,7 +14,6 @@ export default async function authMiddleware(req, res) {
 
     const token = authHeader.split(' ')[1];
 
-    // to verify and attach the user object
     try {
         const playload = jwt.verify(token, JWT_SECRET);
         const user = await User.findById(playload.id).select('-password');

@@ -129,13 +129,63 @@ export async function deleteWatch(req, res) {
 export async function getWatchesByBrand(res, req) {
     try {
         const brandName = req.params.brandName;
-        const items = await getWatches.find({ brandName }).sort({ createdAt: -1}).lean();
+        const items = await Watch.find({ brandName }).sort({ createdAt: -1}).lean();
         
         return res.json({ success: true, items })
     } 
 
     catch (err) {
         console.error("GetWatchesByBrand Error:", err);
+        return res.status(500).json({
+            success: false,
+            message: "Server Error"
+        });
+    }
+}
+
+// TO UPDATE A WATCH
+export async function updateWatch(req, res) {
+    try {
+        const { id } = req.params;
+        const { name, description, price, category, brandName } = req.body;
+        
+        let image = req.body.image;
+        if (req.file?.filename) {
+            image = `${API_BASE}/uploads/${req.file.filename}`;
+            
+            const w = await Watch.findById(id);
+            if (w?.image && typeof w.image === "string") {
+                const normalized = w.image.startsWith("/") ? w.image.slice(1) : w.image;
+                if (normalized.startsWith("uploads/")) {
+                    const filename = normalized.replace(/^uploads\//, "");
+                    const filepath = path.join(process.cwd(), "uploads", filename);
+                    fs.unlink(filepath, (err) => {
+                        if (err) console.warn("Failed to unlink old image file", filepath, err?.message || err);
+                    });
+                }
+            }
+        }
+
+        const updateData = { name, description, price, category, brandName };
+        if (image) updateData.image = image;
+
+        const updated = await Watch.findByIdAndUpdate(id, updateData, { returnDocument: 'after' });
+        
+        if (!updated) {
+            return res.status(404).json({
+                success: false,
+                message: "Watch not found"
+            });
+        }
+
+        return res.json({
+            success: true,
+            message: "Watch updated",
+            data: updated
+        });
+    } 
+    catch (err) {
+        console.error("UpdateWatch Error:", err);
         return res.status(500).json({
             success: false,
             message: "Server Error"

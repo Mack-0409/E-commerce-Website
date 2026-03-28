@@ -6,6 +6,7 @@ import jwt from 'jsonwebtoken';
 
 const TOKEN_EXPIRES_IN = '24h';
 const JWT_SECRET = 'your_jwt_secret_here';
+const ADMIN_EMAILS = (process.env.ADMIN_EMAILS || 'admin@urbantime.com,admin@gmail.com').split(',').map(e => e.trim().toLowerCase());
 
 // registraion of a user
 
@@ -111,6 +112,27 @@ export async function login(req, res) {
             message: "server Error"
         })
     }    
+}
+
+export async function checkAdmin(req, res) {
+    try {
+        const userEmail = req.user.email.toLowerCase();
+        const isAdmin = ADMIN_EMAILS.includes(userEmail);
+        console.log(ADMIN_EMAILS);
+        console.log(userEmail);
+        
+        return res.json({
+            success: true,
+            isAdmin,
+            email: req.user.email
+        });
+    } catch (err) {
+        console.error("CheckAdmin error:", err);
+        return res.status(500).json({
+            success: false,
+            message: "Server Error"
+        });
+    }
 }
 
 

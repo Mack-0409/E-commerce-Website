@@ -1,7 +1,7 @@
 import express from 'express';
 import multer from 'multer';
 import path from 'path';
-import { createWatch, deleteWatch, getWatches, getWatchesByBrand } from '../controllers/watchController.js'
+import { createWatch, deleteWatch, getWatches, getWatchesByBrand, updateWatch } from '../controllers/watchController.js'
 
 const watchRouter = express.Router();
 
@@ -22,6 +22,7 @@ const uploads = multer({storage});
 watchRouter.post('/', uploads.single("image"), createWatch)
 watchRouter.get("/", getWatches);
 watchRouter.delete("/:id", deleteWatch);
+watchRouter.put("/:id", uploads.single("image"), updateWatch)
 watchRouter.get("/brand/:brandName", getWatchesByBrand);
 
 export default watchRouter;

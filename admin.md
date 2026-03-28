@@ -1,5 +1,6 @@
 Arch Switch 
 Currently every listing is hardcoded in files that's wrong 
+- Find all pages with hardcoded listing of watches in frontend folder 
 - create monogo models for the data to be stored
 - Run the app once so that models get created in server
 - Scrap out all hardcoded data and seed it into database 
@@ -14,3 +15,5 @@ Create a new Admin Page (/admin) where only emails which are in admin array can 
 - admins must see orders, enquiries and allow to preform all CRUD operations on data.
 - it should allow user to add/edit/delete a watch listing 
 - Dyanmically generated stats should be shown in as well
+
+Use frontend-design skill for designing ui.
