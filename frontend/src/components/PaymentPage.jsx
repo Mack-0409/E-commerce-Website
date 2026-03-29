@@ -12,6 +12,7 @@ const PaymentPage = () => {
   const [paymentMethod, setPaymentMethod] = useState('card');
   const [isProcessing, setIsProcessing] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [paidAmount, setPaidAmount] = useState(0);
   const [formData, setFormData] = useState({
     cardNumber: '',
     cardName: '',
@@ -107,16 +108,21 @@ const PaymentPage = () => {
     setTimeout(async () => {
       try {
         if (orderId) {
-          await axios.put(`${API_BASE}/orders/${orderId}`, { 
-            orderStatus: 'Processing',
+          console.log('Updating order:', orderId, 'to Completed');
+          const res = await axios.put(`${API_BASE}/orders/${orderId}`, { 
+            orderStatus: 'Completed',
             paymentStatus: 'Paid'
           });
+          console.log('Order updated:', res.data);
           localStorage.removeItem('currentOrderId');
+        } else {
+          console.log('No orderId found in localStorage');
         }
       } catch (err) {
-        console.error('Failed to update order:', err);
+        console.error('Failed to update order:', err.response?.data || err.message);
       }
       
+      setPaidAmount(grandTotal);
       setIsProcessing(false);
       setIsSuccess(true);
       clearCart();
@@ -164,9 +170,12 @@ const PaymentPage = () => {
             <p className="text-gray-300 text-lg mb-2">
               Thank you for your order
             </p>
-            <p className="text-2xl font-semibold text-white mb-6">
-              ₹{grandTotal.toLocaleString('en-IN')}
-            </p>
+            <div className="mb-6">
+              <p className="text-gray-400 text-sm">Amount Paid</p>
+              <p className="text-2xl font-semibold text-white">
+                ₹{paidAmount.toLocaleString('en-IN')}
+              </p>
+            </div>
             <div className="flex items-center justify-center gap-2 text-gray-400 mb-8">
               <ShieldCheck className="w-5 h-5 text-green-400" />
               <span className="text-sm">Your payment is secure</span>
@@ -200,13 +209,19 @@ const PaymentPage = () => {
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
           <div className="lg:col-span-3">
             <div className="bg-gradient-to-br from-gray-800/80 to-gray-900/80 backdrop-blur-xl rounded-2xl shadow-2xl p-8 border border-gray-700/30">
-              <div className="flex items-center gap-3 mb-8">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center">
-                  <Lock className="w-5 h-5 text-white" />
+              <div className="flex items-center justify-between mb-8">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center">
+                    <Lock className="w-5 h-5 text-white" />
+                  </div>
+                  <div>
+                    <span className="text-white font-semibold block">Secure Payment</span>
+                    <span className="text-gray-400 text-sm">256-bit SSL encryption</span>
+                  </div>
                 </div>
-                <div>
-                  <span className="text-white font-semibold block">Secure Payment</span>
-                  <span className="text-gray-400 text-sm">256-bit SSL encryption</span>
+                <div className="text-right">
+                  <span className="text-gray-400 text-sm block">Amount to Pay</span>
+                  <span className="text-white font-bold text-xl">₹{grandTotal.toLocaleString('en-IN')}</span>
                 </div>
               </div>
 
@@ -403,7 +418,7 @@ const PaymentPage = () => {
                   <div key={item.id} className="flex gap-4">
                     <div className="w-16 h-16 rounded-lg overflow-hidden bg-gray-700/50">
                       <img 
-                        src={item.image || 'https://via.placeholder.com/100'} 
+                        src={item.img || item.image || 'https://via.placeholder.com/100'} 
                         alt={item.name}
                         className="w-full h-full object-cover"
                       />

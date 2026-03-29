@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { 
     LayoutDashboard, Watch, ShoppingCart, MessageSquare, 
-    Plus, Edit2, Trash2, Search, ChevronDown, X,
-    Package, DollarSign, TrendingUp, Users, Loader2
+    Plus, Edit2, Trash2, Search, X,
+    DollarSign, Loader2, Sun, Moon
 } from 'lucide-react';
+import { useTheme } from '../ThemeContext';
 import { fetchWatches, createWatch, updateWatch, deleteWatch, fetchOrders, fetchEnquiries, updateEnquiry, deleteEnquiry, fetchStats, checkIsAdmin } from '../api/watches';
 
 const formatPrice = (price) => {
@@ -17,9 +18,9 @@ const formatDate = (date) => {
     });
 };
 
-const Skeleton = ({ className }) => (
-    <div className={`animate-pulse bg-gray-700 rounded ${className}`} />
-);
+const Skeleton = ({ className }) => {
+    return <div className={`animate-pulse bg-gray-200 dark:bg-gray-700 rounded ${className}`} />;
+};
 
 const Admin = () => {
     const [activeTab, setActiveTab] = useState('dashboard');
@@ -32,6 +33,7 @@ const Admin = () => {
     const [showModal, setShowModal] = useState(false);
     const [editingWatch, setEditingWatch] = useState(null);
     const [searchTerm, setSearchTerm] = useState('');
+    const { isDarkMode, toggleTheme } = useTheme();
     
     const [formData, setFormData] = useState({
         name: '', description: '', price: '', category: 'men', brandName: '', image: ''
@@ -167,7 +169,7 @@ const Admin = () => {
 
     if (loading) {
         return (
-            <div className="min-h-screen bg-gray-900 flex items-center justify-center">
+            <div className={`min-h-screen flex items-center justify-center ${isDarkMode ? 'bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900' : 'bg-gradient-to-br from-amber-50 via-white to-yellow-50'}`}>
                 <Loader2 className="w-12 h-12 text-amber-500 animate-spin" />
             </div>
         );
@@ -175,11 +177,11 @@ const Admin = () => {
 
     if (!isAdmin) {
         return (
-            <div className="min-h-screen bg-gray-900 flex items-center justify-center">
+            <div className={`min-h-screen flex items-center justify-center ${isDarkMode ? 'bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900' : 'bg-gradient-to-br from-amber-50 via-white to-yellow-50'}`}>
                 <div className="text-center">
-                    <h1 className="text-3xl font-bold text-white mb-4">Access Denied</h1>
-                    <p className="text-gray-400">You do not have permission to access this page.</p>
-                    <a href="/" className="inline-block mt-6 px-6 py-3 bg-amber-600 text-white rounded-lg hover:bg-amber-700 transition-colors">
+                    <h1 className={`text-4xl font-bold mb-4 font-['Playfair_Display'] ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>Access Denied</h1>
+                    <p className={isDarkMode ? 'text-gray-400' : 'text-gray-600'}>You do not have permission to access this page.</p>
+                    <a href="/" className="inline-block mt-6 px-6 py-3 bg-amber-500 text-white rounded-full hover:bg-amber-600 transition-colors font-medium">
                         Go Home
                     </a>
                 </div>
@@ -195,30 +197,42 @@ const Admin = () => {
     ];
 
     return (
-        <div className="min-h-screen bg-gray-950 text-gray-100 font-sans">
-            <nav className="bg-gray-900 border-b border-gray-800 px-6 py-4">
+        <div className={`min-h-screen font-sans ${isDarkMode ? 'bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900' : 'bg-gradient-to-br from-amber-50 via-white to-yellow-50'}`}>
+            <nav className={`backdrop-blur-md shadow-sm border-b px-6 py-4 sticky top-0 z-40 ${isDarkMode ? 'bg-gray-900/80 border-gray-700' : 'bg-white/80 border-amber-100'}`}>
                 <div className="max-w-7xl mx-auto flex items-center justify-between">
-                    <h1 className="text-2xl font-bold bg-gradient-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent">
-                        UrbanTime Admin
+                    <h1 className={`text-2xl font-bold font-['Playfair_Display'] ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>
+                        <span className="text-amber-500">Urban</span>Time
                     </h1>
-                    <div className="flex gap-2">
+                    <div className="flex items-center gap-2">
                         {tabs.map(tab => {
                             const Icon = tab.icon;
                             return (
                                 <button
                                     key={tab.id}
                                     onClick={() => setActiveTab(tab.id)}
-                                    className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all ${
+                                    className={`flex items-center gap-2 px-4 py-2 rounded-full transition-all ${
                                         activeTab === tab.id 
-                                            ? 'bg-amber-600 text-white' 
-                                            : 'text-gray-400 hover:bg-gray-800 hover:text-white'
+                                            ? 'bg-amber-500 text-white shadow-md' 
+                                            : isDarkMode 
+                                                ? 'text-gray-300 hover:bg-gray-800 hover:text-amber-400'
+                                                : 'text-gray-600 hover:bg-amber-50 hover:text-amber-600'
                                     }`}
                                 >
                                     <Icon size={18} />
-                                    <span className="hidden md:inline">{tab.label}</span>
+                                    <span className="hidden md:inline font-medium">{tab.label}</span>
                                 </button>
                             );
                         })}
+                        <button
+                            onClick={toggleTheme}
+                            className={`ml-2 p-2.5 rounded-full transition-all ${
+                                isDarkMode 
+                                    ? 'bg-amber-500 text-white hover:bg-amber-600' 
+                                    : 'bg-gray-800 text-white hover:bg-gray-900'
+                            }`}
+                        >
+                            {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
+                        </button>
                     </div>
                 </div>
             </nav>
@@ -255,54 +269,54 @@ const Admin = () => {
             </main>
 
             {showModal && (
-                <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-                    <div className="bg-gray-900 rounded-2xl w-full max-w-lg border border-gray-800 shadow-2xl">
-                        <div className="flex items-center justify-between p-6 border-b border-gray-800">
-                            <h2 className="text-xl font-bold text-white">
+                <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+                    <div className={`rounded-2xl w-full max-w-lg shadow-2xl border ${isDarkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-amber-100'}`}>
+                        <div className={`flex items-center justify-between p-6 border-b ${isDarkMode ? 'border-gray-700' : 'border-amber-100'}`}>
+                            <h2 className={`text-xl font-bold font-['Playfair_Display'] ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>
                                 {editingWatch ? 'Edit Watch' : 'Add New Watch'}
                             </h2>
-                            <button onClick={() => setShowModal(false)} className="text-gray-400 hover:text-white">
+                            <button onClick={() => setShowModal(false)} className={isDarkMode ? 'text-gray-400 hover:text-white' : 'text-gray-400 hover:text-gray-600'}>
                                 <X size={24} />
                             </button>
                         </div>
                         <form onSubmit={handleSubmit} className="p-6 space-y-4">
                             <div>
-                                <label className="block text-sm text-gray-400 mb-1">Name</label>
+                                <label className={`block text-sm mb-1 font-medium ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>Name</label>
                                 <input
                                     type="text"
                                     value={formData.name}
                                     onChange={e => setFormData({...formData, name: e.target.value})}
-                                    className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+                                    className={`w-full border rounded-xl px-4 py-3 focus:ring-2 focus:ring-amber-500 focus:border-transparent ${isDarkMode ? 'bg-gray-700 border-gray-600 text-white' : 'bg-gray-50 border-gray-200 text-gray-800'}`}
                                     required
                                 />
                             </div>
                             <div>
-                                <label className="block text-sm text-gray-400 mb-1">Description</label>
+                                <label className={`block text-sm mb-1 font-medium ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>Description</label>
                                 <input
                                     type="text"
                                     value={formData.description}
                                     onChange={e => setFormData({...formData, description: e.target.value})}
-                                    className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+                                    className={`w-full border rounded-xl px-4 py-3 focus:ring-2 focus:ring-amber-500 focus:border-transparent ${isDarkMode ? 'bg-gray-700 border-gray-600 text-white' : 'bg-gray-50 border-gray-200 text-gray-800'}`}
                                     required
                                 />
                             </div>
                             <div className="grid grid-cols-2 gap-4">
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-1">Price (₹)</label>
+                                    <label className={`block text-sm mb-1 font-medium ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>Price (₹)</label>
                                     <input
                                         type="number"
                                         value={formData.price}
                                         onChange={e => setFormData({...formData, price: e.target.value})}
-                                        className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+                                        className={`w-full border rounded-xl px-4 py-3 focus:ring-2 focus:ring-amber-500 focus:border-transparent ${isDarkMode ? 'bg-gray-700 border-gray-600 text-white' : 'bg-gray-50 border-gray-200 text-gray-800'}`}
                                         required
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-1">Category</label>
+                                    <label className={`block text-sm mb-1 font-medium ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>Category</label>
                                     <select
                                         value={formData.category}
                                         onChange={e => setFormData({...formData, category: e.target.value})}
-                                        className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+                                        className={`w-full border rounded-xl px-4 py-3 focus:ring-2 focus:ring-amber-500 focus:border-transparent ${isDarkMode ? 'bg-gray-700 border-gray-600 text-white' : 'bg-gray-50 border-gray-200 text-gray-800'}`}
                                     >
                                         <option value="men">Men</option>
                                         <option value="women">Women</option>
@@ -310,28 +324,28 @@ const Admin = () => {
                                 </div>
                             </div>
                             <div>
-                                <label className="block text-sm text-gray-400 mb-1">Brand Name</label>
+                                <label className={`block text-sm mb-1 font-medium ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>Brand Name</label>
                                 <input
                                     type="text"
                                     value={formData.brandName}
                                     onChange={e => setFormData({...formData, brandName: e.target.value})}
-                                    className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+                                    className={`w-full border rounded-xl px-4 py-3 focus:ring-2 focus:ring-amber-500 focus:border-transparent ${isDarkMode ? 'bg-gray-700 border-gray-600 text-white' : 'bg-gray-50 border-gray-200 text-gray-800'}`}
                                 />
                             </div>
                             <div>
-                                <label className="block text-sm text-gray-400 mb-1">Image URL</label>
+                                <label className={`block text-sm mb-1 font-medium ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>Image URL</label>
                                 <input
                                     type="text"
                                     value={formData.image}
                                     onChange={e => setFormData({...formData, image: e.target.value})}
                                     placeholder="/W1.png"
-                                    className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+                                    className={`w-full border rounded-xl px-4 py-3 focus:ring-2 focus:ring-amber-500 focus:border-transparent ${isDarkMode ? 'bg-gray-700 border-gray-600 text-white' : 'bg-gray-50 border-gray-200 text-gray-800'}`}
                                     required
                                 />
                             </div>
                             <button
                                 type="submit"
-                                className="w-full bg-gradient-to-r from-amber-500 to-amber-600 text-white font-bold py-3 rounded-lg hover:from-amber-600 hover:to-amber-700 transition-all"
+                                className="w-full bg-gradient-to-r from-amber-500 to-yellow-500 text-white font-bold py-3 rounded-xl hover:from-amber-600 hover:to-yellow-600 transition-all shadow-lg"
                             >
                                 {editingWatch ? 'Update Watch' : 'Add Watch'}
                             </button>
@@ -344,37 +358,47 @@ const Admin = () => {
 };
 
 const DashboardTab = ({ stats, loading }) => {
+    const { isDarkMode } = useTheme();
+    
     if (loading) {
         return (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                {[1,2,3,4].map(i => <Skeleton key={i} className="h-32" />)}
+                {[1,2,3,4].map(i => <Skeleton key={i} className={`h-40 ${isDarkMode ? 'bg-gray-700' : 'bg-gray-200'}`} />)}
             </div>
         );
     }
 
     const statCards = [
-        { label: 'Total Watches', value: stats?.totalWatches || 0, icon: Watch, color: 'from-blue-500 to-blue-600' },
-        { label: 'Total Orders', value: stats?.totalOrders || 0, icon: ShoppingCart, color: 'from-green-500 to-green-600' },
-        { label: 'Total Enquiries', value: stats?.totalEnquiries || 0, icon: MessageSquare, color: 'from-purple-500 to-purple-600' },
-        { label: 'Total Revenue', value: formatPrice(stats?.totalRevenue || 0), icon: DollarSign, color: 'from-amber-500 to-amber-600' },
+        { label: 'Total Watches', value: stats?.totalWatches || 0, icon: Watch, color: 'from-blue-500 to-blue-700', bgColor: isDarkMode ? 'bg-blue-900/30' : 'bg-blue-50' },
+        { label: 'Total Orders', value: stats?.totalOrders || 0, icon: ShoppingCart, color: 'from-emerald-500 to-emerald-700', bgColor: isDarkMode ? 'bg-emerald-900/30' : 'bg-emerald-50' },
+        { label: 'Total Enquiries', value: stats?.totalEnquiries || 0, icon: MessageSquare, color: 'from-violet-500 to-violet-700', bgColor: isDarkMode ? 'bg-violet-900/30' : 'bg-violet-50' },
+        { label: 'Total Revenue', value: formatPrice(stats?.totalRevenue || 0), icon: DollarSign, color: 'from-amber-500 to-orange-600', bgColor: isDarkMode ? 'bg-amber-900/30' : 'bg-amber-50' },
     ];
 
     return (
-        <div className="space-y-8">
-            <h2 className="text-2xl font-bold text-white">Dashboard Overview</h2>
+        <div className="space-y-10">
+            <div className="flex items-center gap-4">
+                <div className="w-1 h-10 bg-gradient-to-b from-amber-400 to-amber-600 rounded-full"></div>
+                <h2 className={`text-4xl font-bold font-['Playfair_Display'] tracking-tight ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Dashboard Overview</h2>
+            </div>
+            
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {statCards.map((stat, i) => {
                     const Icon = stat.icon;
                     return (
-                        <div key={i} className="bg-gray-900 rounded-2xl p-6 border border-gray-800 hover:border-gray-700 transition-all group">
-                            <div className="flex items-center justify-between">
-                                <div>
-                                    <p className="text-gray-400 text-sm">{stat.label}</p>
-                                    <p className="text-3xl font-bold text-white mt-1">{stat.value}</p>
+                        <div 
+                            key={i} 
+                            className={`relative overflow-hidden rounded-3xl shadow-sm border hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 group ${isDarkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-100'}`}
+                        >
+                            <div className={`absolute top-0 right-0 w-32 h-32 ${stat.bgColor} rounded-full -mr-16 -mt-16 opacity-60`}></div>
+                            <div className="relative p-6">
+                                <div className="flex items-center justify-between mb-4">
+                                    <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${stat.color} flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                                        <Icon className="text-white" size={22} />
+                                    </div>
                                 </div>
-                                <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${stat.color} flex items-center justify-center group-hover:scale-110 transition-transform`}>
-                                    <Icon className="text-white" size={24} />
-                                </div>
+                                <p className={`text-sm font-medium uppercase tracking-wide ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>{stat.label}</p>
+                                <p className={`text-4xl font-bold mt-2 tracking-tight ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>{stat.value}</p>
                             </div>
                         </div>
                     );
@@ -382,24 +406,32 @@ const DashboardTab = ({ stats, loading }) => {
             </div>
             
             {stats?.recentOrders?.length > 0 && (
-                <div className="bg-gray-900 rounded-2xl p-6 border border-gray-800">
-                    <h3 className="text-lg font-bold text-white mb-4">Recent Orders</h3>
-                    <div className="space-y-3">
+                <div className={`rounded-3xl shadow-sm border overflow-hidden ${isDarkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-100'}`}>
+                    <div className={`px-8 py-6 border-b ${isDarkMode ? 'border-gray-700 bg-gray-800' : 'border-gray-100 bg-gradient-to-r from-amber-50 to-yellow-50'}`}>
+                        <h3 className={`text-2xl font-bold font-['Playfair_Display'] ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Recent Orders</h3>
+                        <p className={`text-sm mt-1 ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>Latest transactions from your customers</p>
+                    </div>
+                    <div className={`divide-y ${isDarkMode ? 'divide-gray-700' : 'divide-gray-50'}`}>
                         {stats.recentOrders.map(order => (
-                            <div key={order._id} className="flex items-center justify-between p-4 bg-gray-800 rounded-lg">
-                                <div>
-                                    <p className="text-white font-medium">{order.name}</p>
-                                    <p className="text-gray-400 text-sm">{order.items?.length} items • {formatDate(order.createdAt)}</p>
+                            <div key={order._id} className={`flex items-center justify-between px-8 py-5 transition-colors ${isDarkMode ? 'hover:bg-gray-700/50' : 'hover:bg-amber-50/50'}`}>
+                                <div className="flex items-center gap-4">
+                                    <div className={`w-12 h-12 rounded-2xl flex items-center justify-center ${isDarkMode ? 'bg-gray-700' : 'bg-gradient-to-br from-gray-100 to-gray-200'}`}>
+                                        <ShoppingCart className={isDarkMode ? 'text-gray-300' : 'text-gray-600'} size={20} />
+                                    </div>
+                                    <div>
+                                        <p className={`font-semibold text-lg ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>{order.name}</p>
+                                        <p className={`text-sm ${isDarkMode ? 'text-gray-500' : 'text-gray-400'}`}>{order.items?.length} items • {formatDate(order.createdAt)}</p>
+                                    </div>
                                 </div>
-                                <div className="text-right">
-                                    <p className="text-amber-400 font-bold">{formatPrice(order.finalAmount)}</p>
-                                    <span className={`text-xs px-2 py-1 rounded ${
-                                        order.orderStatus === 'Completed' ? 'bg-green-900 text-green-400' :
-                                        order.orderStatus === 'Cancelled' ? 'bg-red-900 text-red-400' :
-                                        'bg-yellow-900 text-yellow-400'
+                                <div className="flex items-center gap-4">
+                                    <span className={`px-4 py-1.5 rounded-full text-sm font-medium ${
+                                        order.orderStatus === 'Completed' ? (isDarkMode ? 'bg-emerald-900/50 text-emerald-400' : 'bg-emerald-100 text-emerald-700') :
+                                        order.orderStatus === 'Cancelled' ? (isDarkMode ? 'bg-red-900/50 text-red-400' : 'bg-red-100 text-red-700') :
+                                        (isDarkMode ? 'bg-amber-900/50 text-amber-400' : 'bg-amber-100 text-amber-700')
                                     }`}>
                                         {order.orderStatus}
                                     </span>
+                                    <p className={`font-bold text-xl min-w-[120px] text-right ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>{formatPrice(order.finalAmount)}</p>
                                 </div>
                             </div>
                         ))}
@@ -410,10 +442,13 @@ const DashboardTab = ({ stats, loading }) => {
     );
 };
 
-const WatchesTab = ({ watches, loading, searchTerm, setSearchTerm, onAdd, onEdit, onDelete }) => (
+const WatchesTab = ({ watches, loading, searchTerm, setSearchTerm, onAdd, onEdit, onDelete }) => {
+    const { isDarkMode } = useTheme();
+    
+    return (
     <div className="space-y-6">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-            <h2 className="text-2xl font-bold text-white">Watches Management</h2>
+            <h2 className={`text-3xl font-bold font-['Playfair_Display'] ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>Watches Management</h2>
             <div className="flex gap-3">
                 <div className="relative">
                     <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
@@ -422,12 +457,12 @@ const WatchesTab = ({ watches, loading, searchTerm, setSearchTerm, onAdd, onEdit
                         placeholder="Search watches..."
                         value={searchTerm}
                         onChange={e => setSearchTerm(e.target.value)}
-                        className="bg-gray-900 border border-gray-700 rounded-lg pl-10 pr-4 py-2 text-white focus:ring-2 focus:ring-amber-500"
+                        className={`border rounded-full pl-10 pr-4 py-2 focus:ring-2 focus:ring-amber-500 shadow-sm ${isDarkMode ? 'bg-gray-800 border-gray-700 text-white' : 'bg-white border-gray-200 text-gray-800'}`}
                     />
                 </div>
                 <button
                     onClick={onAdd}
-                    className="flex items-center gap-2 bg-amber-600 text-white px-4 py-2 rounded-lg hover:bg-amber-700 transition-colors"
+                    className="flex items-center gap-2 bg-amber-500 text-white px-5 py-2 rounded-full hover:bg-amber-600 transition-colors shadow-md font-medium"
                 >
                     <Plus size={20} /> Add Watch
                 </button>
@@ -436,36 +471,36 @@ const WatchesTab = ({ watches, loading, searchTerm, setSearchTerm, onAdd, onEdit
 
         {loading ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {[1,2,3,4,5,6].map(i => <Skeleton key={i} className="h-64" />)}
+                {[1,2,3,4,5,6].map(i => <Skeleton key={i} className={`h-64 ${isDarkMode ? 'bg-gray-700' : 'bg-gray-200'}`} />)}
             </div>
         ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {watches.map(watch => (
-                    <div key={watch._id} className="bg-gray-900 rounded-xl border border-gray-800 overflow-hidden hover:border-gray-700 transition-all group">
-                        <div className="aspect-square bg-gray-800 relative overflow-hidden">
+                    <div key={watch._id} className={`rounded-xl shadow-lg border overflow-hidden hover:shadow-xl transition-all group ${isDarkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-amber-100'}`}>
+                        <div className={`relative overflow-hidden flex justify-center items-center ${isDarkMode ? 'bg-gray-700' : 'bg-gray-100'}`}>
                             <img 
                                 src={watch.image} 
                                 alt={watch.name}
-                                className="w-full h-full object-cover group-hover:scale-105 transition-transform"
+                                className="object-contain h-48 md:h-56 lg:h-64 group-hover:scale-105 transition-transform"
                                 onError={e => e.target.src = '/placeholder.png'}
                             />
                             <div className="absolute top-2 right-2 flex gap-2">
-                                <button onClick={() => onEdit(watch)} className="p-2 bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors">
+                                <button onClick={() => onEdit(watch)} className="p-2 bg-blue-500 rounded-full hover:bg-blue-600 transition-colors shadow-md">
                                     <Edit2 size={16} className="text-white" />
                                 </button>
-                                <button onClick={() => onDelete(watch._id)} className="p-2 bg-red-600 rounded-lg hover:bg-red-700 transition-colors">
+                                <button onClick={() => onDelete(watch._id)} className="p-2 bg-red-500 rounded-full hover:bg-red-600 transition-colors shadow-md">
                                     <Trash2 size={16} className="text-white" />
                                 </button>
                             </div>
                         </div>
                         <div className="p-4">
-                            <p className="text-amber-400 text-sm">{watch.brandName}</p>
-                            <h3 className="text-white font-bold truncate">{watch.name}</h3>
-                            <p className="text-gray-400 text-sm truncate">{watch.description}</p>
+                            <p className="text-amber-500 text-sm font-medium">{watch.brandName}</p>
+                            <h3 className={`font-bold truncate ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>{watch.name}</h3>
+                            <p className={`text-sm truncate ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>{watch.description}</p>
                             <div className="flex items-center justify-between mt-3">
-                                <span className="text-white font-bold">{formatPrice(watch.price)}</span>
-                                <span className={`text-xs px-2 py-1 rounded ${
-                                    watch.category === 'men' ? 'bg-blue-900 text-blue-400' : 'bg-pink-900 text-pink-400'
+                                <span className={`font-bold text-lg ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>{formatPrice(watch.price)}</span>
+                                <span className={`text-xs px-3 py-1 rounded-full ${
+                                    watch.category === 'men' ? (isDarkMode ? 'bg-blue-900/50 text-blue-400' : 'bg-blue-100 text-blue-700') : (isDarkMode ? 'bg-pink-900/50 text-pink-400' : 'bg-pink-100 text-pink-700')
                                 }`}>
                                     {watch.category}
                                 </span>
@@ -476,59 +511,62 @@ const WatchesTab = ({ watches, loading, searchTerm, setSearchTerm, onAdd, onEdit
             </div>
         )}
     </div>
-);
+    );
+};
 
 const OrdersTab = ({ orders, loading }) => {
+    const { isDarkMode } = useTheme();
+    
     const getStatusColor = (status) => {
         switch(status) {
-            case 'Completed': return 'bg-green-900 text-green-400';
-            case 'Cancelled': return 'bg-red-900 text-red-400';
-            case 'Confirmed': return 'bg-blue-900 text-blue-400';
-            default: return 'bg-yellow-900 text-yellow-400';
+            case 'Completed': return isDarkMode ? 'bg-green-900/50 text-green-400' : 'bg-green-100 text-green-700';
+            case 'Cancelled': return isDarkMode ? 'bg-red-900/50 text-red-400' : 'bg-red-100 text-red-700';
+            case 'Confirmed': return isDarkMode ? 'bg-blue-900/50 text-blue-400' : 'bg-blue-100 text-blue-700';
+            default: return isDarkMode ? 'bg-amber-900/50 text-amber-400' : 'bg-yellow-100 text-yellow-700';
         }
     };
 
     if (loading) {
-        return <Skeleton className="h-96" />;
+        return <Skeleton className={`h-96 ${isDarkMode ? 'bg-gray-700' : 'bg-gray-200'}`} />;
     }
 
     return (
         <div className="space-y-6">
-            <h2 className="text-2xl font-bold text-white">Orders Management</h2>
-            <div className="bg-gray-900 rounded-2xl border border-gray-800 overflow-hidden">
+            <h2 className={`text-3xl font-bold font-['Playfair_Display'] ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>Orders Management</h2>
+            <div className={`rounded-2xl shadow-lg border overflow-hidden ${isDarkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-amber-100'}`}>
                 <table className="w-full">
-                    <thead className="bg-gray-800">
+                    <thead className={isDarkMode ? 'bg-gray-700' : 'bg-amber-50'}>
                         <tr>
-                            <th className="text-left p-4 text-gray-400 font-medium">Order ID</th>
-                            <th className="text-left p-4 text-gray-400 font-medium">Customer</th>
-                            <th className="text-left p-4 text-gray-400 font-medium">Items</th>
-                            <th className="text-left p-4 text-gray-400 font-medium">Amount</th>
-                            <th className="text-left p-4 text-gray-400 font-medium">Status</th>
-                            <th className="text-left p-4 text-gray-400 font-medium">Date</th>
+                            <th className={`text-left p-4 font-semibold ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>Order ID</th>
+                            <th className={`text-left p-4 font-semibold ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>Customer</th>
+                            <th className={`text-left p-4 font-semibold ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>Items</th>
+                            <th className={`text-left p-4 font-semibold ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>Amount</th>
+                            <th className={`text-left p-4 font-semibold ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>Status</th>
+                            <th className={`text-left p-4 font-semibold ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>Date</th>
                         </tr>
                     </thead>
                     <tbody>
                         {orders.map(order => (
-                            <tr key={order._id} className="border-t border-gray-800 hover:bg-gray-800/50">
-                                <td className="p-4 text-white font-mono text-sm">{order.orderId?.slice(0, 8)}...</td>
+                            <tr key={order._id} className={`border-t transition-colors ${isDarkMode ? 'border-gray-700 hover:bg-gray-700/50' : 'border-gray-100 hover:bg-amber-50/50'}`}>
+                                <td className={`p-4 font-mono text-sm ${isDarkMode ? 'text-gray-300' : 'text-gray-800'}`}>{order.orderId?.slice(0, 8)}...</td>
                                 <td className="p-4">
-                                    <p className="text-white">{order.name}</p>
-                                    <p className="text-gray-400 text-sm">{order.email}</p>
+                                    <p className={isDarkMode ? 'text-white' : 'text-gray-800'}>{order.name}</p>
+                                    <p className={isDarkMode ? 'text-gray-500' : 'text-gray-500'} text-sm>{order.email}</p>
                                 </td>
-                                <td className="p-4 text-gray-300">{order.items?.length} items</td>
-                                <td className="p-4 text-amber-400 font-bold">{formatPrice(order.finalAmount)}</td>
+                                <td className={`p-4 ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>{order.items?.length} items</td>
+                                <td className="p-4 text-amber-500 font-bold">{formatPrice(order.finalAmount)}</td>
                                 <td className="p-4">
-                                    <span className={`text-xs px-2 py-1 rounded ${getStatusColor(order.orderStatus)}`}>
+                                    <span className={`text-xs px-3 py-1 rounded-full ${getStatusColor(order.orderStatus)}`}>
                                         {order.orderStatus}
                                     </span>
                                 </td>
-                                <td className="p-4 text-gray-400 text-sm">{formatDate(order.createdAt)}</td>
+                                <td className={`p-4 text-sm ${isDarkMode ? 'text-gray-500' : 'text-gray-500'}`}>{formatDate(order.createdAt)}</td>
                             </tr>
                         ))}
                     </tbody>
                 </table>
                 {orders.length === 0 && (
-                    <div className="p-8 text-center text-gray-400">No orders found</div>
+                    <div className={`p-8 text-center ${isDarkMode ? 'text-gray-500' : 'text-gray-500'}`}>No orders found</div>
                 )}
             </div>
         </div>
@@ -536,42 +574,44 @@ const OrdersTab = ({ orders, loading }) => {
 };
 
 const EnquiriesTab = ({ enquiries, loading, onStatusChange, onDelete }) => {
+    const { isDarkMode } = useTheme();
+    
     const getStatusColor = (status) => {
         switch(status) {
-            case 'Read': return 'bg-blue-900 text-blue-400';
-            case 'Replied': return 'bg-green-900 text-green-400';
-            default: return 'bg-yellow-900 text-yellow-400';
+            case 'Read': return isDarkMode ? 'bg-blue-900/50 text-blue-400' : 'bg-blue-100 text-blue-700';
+            case 'Replied': return isDarkMode ? 'bg-green-900/50 text-green-400' : 'bg-green-100 text-green-700';
+            default: return isDarkMode ? 'bg-amber-900/50 text-amber-400' : 'bg-yellow-100 text-yellow-700';
         }
     };
 
     if (loading) {
-        return <Skeleton className="h-96" />;
+        return <Skeleton className={`h-96 ${isDarkMode ? 'bg-gray-700' : 'bg-gray-200'}`} />;
     }
 
     return (
         <div className="space-y-6">
-            <h2 className="text-2xl font-bold text-white">Enquiries Management</h2>
+            <h2 className={`text-3xl font-bold font-['Playfair_Display'] ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>Enquiries Management</h2>
             <div className="grid gap-4">
                 {enquiries.map(enquiry => (
-                    <div key={enquiry._id} className="bg-gray-900 rounded-xl border border-gray-800 p-6 hover:border-gray-700 transition-all">
+                    <div key={enquiry._id} className={`rounded-xl shadow-lg border p-6 hover:shadow-xl transition-all ${isDarkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-amber-100'}`}>
                         <div className="flex items-start justify-between">
                             <div className="flex-1">
                                 <div className="flex items-center gap-3 mb-2">
-                                    <h3 className="text-white font-bold">{enquiry.name}</h3>
-                                    <span className={`text-xs px-2 py-1 rounded ${getStatusColor(enquiry.status)}`}>
+                                    <h3 className={`font-bold ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>{enquiry.name}</h3>
+                                    <span className={`text-xs px-3 py-1 rounded-full ${getStatusColor(enquiry.status)}`}>
                                         {enquiry.status}
                                     </span>
                                 </div>
-                                <p className="text-gray-400 text-sm mb-1">{enquiry.email} • {enquiry.phone}</p>
-                                {enquiry.subject && <p className="text-amber-400 text-sm mb-2">{enquiry.subject}</p>}
-                                <p className="text-gray-300">{enquiry.message}</p>
-                                <p className="text-gray-500 text-xs mt-3">{formatDate(enquiry.createdAt)}</p>
+                                <p className={`text-sm mb-1 ${isDarkMode ? 'text-gray-500' : 'text-gray-500'}`}>{enquiry.email} • {enquiry.phone}</p>
+                                {enquiry.subject && <p className="text-amber-500 text-sm mb-2 font-medium">{enquiry.subject}</p>}
+                                <p className={isDarkMode ? 'text-gray-300' : 'text-gray-600'}>{enquiry.message}</p>
+                                <p className={`text-xs mt-3 ${isDarkMode ? 'text-gray-500' : 'text-gray-400'}`}>{formatDate(enquiry.createdAt)}</p>
                             </div>
                             <div className="flex gap-2 ml-4">
                                 <select
                                     value={enquiry.status}
                                     onChange={e => onStatusChange(enquiry._id, e.target.value)}
-                                    className="bg-gray-800 border border-gray-700 text-white text-sm rounded-lg px-3 py-2"
+                                    className={`text-sm rounded-xl px-3 py-2 ${isDarkMode ? 'bg-gray-700 border-gray-600 text-gray-300' : 'bg-amber-50 border border-amber-200 text-gray-700'}`}
                                 >
                                     <option value="New">New</option>
                                     <option value="Read">Read</option>
@@ -579,7 +619,7 @@ const EnquiriesTab = ({ enquiries, loading, onStatusChange, onDelete }) => {
                                 </select>
                                 <button 
                                     onClick={() => onDelete(enquiry._id)}
-                                    className="p-2 bg-red-600 rounded-lg hover:bg-red-700 transition-colors"
+                                    className="p-2 bg-red-500 rounded-xl hover:bg-red-600 transition-colors shadow-md"
                                 >
                                     <Trash2 size={16} className="text-white" />
                                 </button>
@@ -588,7 +628,7 @@ const EnquiriesTab = ({ enquiries, loading, onStatusChange, onDelete }) => {
                     </div>
                 ))}
                 {enquiries.length === 0 && (
-                    <div className="p-8 text-center text-gray-400">No enquiries found</div>
+                    <div className={`p-8 text-center ${isDarkMode ? 'text-gray-500' : 'text-gray-500'}`}>No enquiries found</div>
                 )}
             </div>
         </div>

@@ -52,7 +52,7 @@ const CartPage = () => {
       items: cart.map(item => ({
         productId: item.id,
         name: item.name,
-        img: item.image,
+        img: item.img || item.image,
         price: Number(item.price.replace(/[₹,]/g, '')),
         qty: item.qty,
         description: item.description || item.desc || 'No description'
@@ -141,7 +141,7 @@ const CartPage = () => {
                   <div key={item.id} className={cartPageStyles.cartItemCard}>
                     <div className={cartPageStyles.cartItemImageContainer}>
                       <img 
-                        src={item.image || 'https://via.placeholder.com/200'} 
+                        src={item.img || item.image || 'https://via.placeholder.com/200'} 
                         alt={item.name}
                         className={cartPageStyles.cartItemImage}
                       />
@@ -183,7 +183,7 @@ const CartPage = () => {
                 {cart.map((item) => (
                   <div key={item.id} className="bg-white dark:bg-gray-800 rounded-xl shadow-md p-3 sm:p-4 flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4 transition-colors">
                     <img 
-                      src={item.image || 'https://via.placeholder.com/100'} 
+                      src={item.img || item.image || 'https://via.placeholder.com/100'} 
                       alt={item.name}
                       className="w-20 h-20 sm:w-24 sm:h-24 object-contain rounded-lg"
                     />
