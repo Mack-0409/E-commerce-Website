@@ -69,21 +69,6 @@ export const createOrder = async (req, res, next) => {
         const order = new Order(orderPayload);
         await order.save();
 
-        setTimeout(async () => {
-            try {
-                const currentOrder = await Order.findById(order._id);
-                if (currentOrder && currentOrder.paymentStatus === "Unpaid") {
-                    await Order.findByIdAndUpdate(
-                        order._id,
-                        { orderStatus: "Pending" },
-                        { returnDocument: 'after' }
-                    );
-                }
-            } catch (err) {
-                console.error("Auto-update order error:", err);
-            }
-        }, 60000);
-
         return res.status(201).json({
             success: true,
             order,

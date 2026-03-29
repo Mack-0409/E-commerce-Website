@@ -108,18 +108,14 @@ const PaymentPage = () => {
     setTimeout(async () => {
       try {
         if (orderId) {
-          console.log('Updating order:', orderId, 'to Completed');
-          const res = await axios.put(`${API_BASE}/orders/${orderId}`, { 
+          await axios.put(`${API_BASE}/orders/${orderId}`, { 
             orderStatus: 'Completed',
             paymentStatus: 'Paid'
           });
-          console.log('Order updated:', res.data);
           localStorage.removeItem('currentOrderId');
-        } else {
-          console.log('No orderId found in localStorage');
         }
       } catch (err) {
-        console.error('Failed to update order:', err.response?.data || err.message);
+        console.error('Failed to update order:', err);
       }
       
       setPaidAmount(grandTotal);
